@@ -1,6 +1,6 @@
 import { AI_NAME, OWNER_NAME } from "@/configuration/identity";
 
-export const CHAT_HEADER: string = `Knowledge is power. Guard it well`;
+export const CHAT_HEADER: string = `Knowledge is power. Guard it well.`;
 export const MESSAGE_PLACEHOLDER: string = `[MESSAGE PLACEHOLDER]`;
 export const FOOTER_MESSAGE: string = `Customized AI by Dan Osika, MBA @ UNC Kenan-Flagler`;
 export const CLEAR_BUTTON_TEXT: string = `[CLEAR BUTTON TEXT]`;
