@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --background-image: url('/warhammer-bg.jpg');
-    --background-overlay: rgba(0, 0, 0, 0.6);
+    --background-image: url('/warhammer-bg.jpg'); /* Replace with an actual image */
+    --background-overlay: rgba(0, 0, 0, 0.6); /* Dark overlay for grimdark effect */
   }
 }
 
@@ -25,7 +25,7 @@
   width: 100%;
   height: 100%;
   background-color: var(--background-overlay);
-  backdrop-filter: blur(4px); 
+  backdrop-filter: blur(4px); /* Subtle blur effect for mysticism */
   z-index: 0;
 }
 
@@ -37,7 +37,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #d1d5db;
-  font-family: "Orbitron", sans-serif; 
+  color: #d1d5db; /* Light grey text */
+  font-family: "Orbitron", sans-serif; /* Futuristic tech font */
   text-shadow: 2px 2px 8px black;
 }
