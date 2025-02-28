@@ -45,22 +45,24 @@
 
 .ai-message {
   background-color: #0a0a0a; /* Dark background */
-  color: #33ff33; /* Green futuristic text */
+  color: #33ff33; /* Green terminal text */
   font-family: "OCR-A", "OCR-B", monospace;
-  border: 3px solid transparent; /* Transparent border to allow grunge effect */
   padding: 12px;
-  border-radius: 5px;
-  box-shadow: inset 0 0 15px rgba(255, 140, 0, 0.3), /* Rust-like inner glow */
-              0 0 10px rgba(51, 255, 51, 0.5); /* Green terminal glow */
-  white-space: pre-wrap; /* Prevents text from breaking */
+  border-radius: 8px; /* Makes it feel like an inset screen */
+  border: 5px solid #333; /* Dark metallic border */
+  box-shadow: 
+    inset 0 0 5px rgba(0, 255, 0, 0.3), /* Inner green glow */
+    0 0 10px rgba(51, 255, 51, 0.5), /* Outer glow */
+    0 0 20px rgba(0, 0, 0, 0.8); /* Deep shadow for depth */
+  white-space: pre-wrap;
   animation: crt-glow 1.5s infinite alternate; /* Glowing effect */
 
-  max-width: 70%; /* Keeps AI response wide */
-  margin-left: -5%; /* Pushes further left */
-  margin-right: auto; /* Aligns to the left */
+  max-width: 65%;
+  margin-left: -5%;
+  margin-right: auto;
 
-  background-image: url('https://www.transparenttextures.com/patterns/dirty-old-black-paper.png'); /* Rust texture */
-  background-blend-mode: multiply; /* Darkens the texture */
+  background-image: url('https://www.transparenttextures.com/patterns/brushed-alum.png'); /* Subtle metallic texture */
+  background-blend-mode: multiply; /* Blends texture into the background */
 }
 
 .citation {
