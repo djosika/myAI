@@ -26,7 +26,6 @@
   width: 100%;
   height: 100%;
   background-color: var(--background-overlay);
-  backdrop-filter: blur(4px); /* Subtle blur effect for mysticism */
   z-index: 0;
 }
 
