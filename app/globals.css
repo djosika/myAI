@@ -44,7 +44,7 @@
 }
 
 .ai-message {
-  background-color: #0a0a0a; /* Dark background */
+  background-color: #080808; /* Slightly lighter dark */
   color: #33ff33; /* Green terminal text */
   font-family: "OCR-A", "OCR-B", monospace;
   padding: 12px;
