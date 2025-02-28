@@ -23,12 +23,12 @@ function UserMessage({ message }: { message: DisplayMessage }) {
       className="flex flex-1 py-1 justify-end"
     >
       <motion.div
-        whileHover={{ scale: 1.01 }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        className="px-3 py-1 bg-blue-500 rounded-2xl text-white max-w-[60%] shadow-sm hover:shadow-md transition-shadow duration-300"
-      >
-        {message.content}
-      </motion.div>
+  whileHover={{ scale: 1.01 }}
+  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+  className="user-message"
+>
+  {message.content}
+</motion.div>
     </motion.div>
   );
 }
