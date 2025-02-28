@@ -42,3 +42,21 @@
   font-family: "OCR-A", "OCR-B", monospace; /* Use OCR-A / OCR-B font */
   text-shadow: none; /* Removes grey shadow */
 }
+
+.ai-message {
+  background-color: #0a0a0a; /* Light black background */
+  color: #33ff33; /* Futuristic green text */
+  font-family: "OCR-A", "OCR-B", monospace;
+  border: 1px solid #33ff33;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #33ff33;
+  white-space: pre-wrap; /* Prevents text from breaking */
+  animation: crt-glow 1.5s infinite alternate; /* Glowing effect */
+}
+
+@keyframes crt-glow {
+  0% { text-shadow: 0 0 5px #33ff33; }
+  50% { text-shadow: 0 0 10px #33ff33; }
+  100% { text-shadow: 0 0 5px #33ff33; }
+}
