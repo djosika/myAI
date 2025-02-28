@@ -53,6 +53,10 @@
   box-shadow: 0 0 5px #33ff33;
   white-space: pre-wrap; /* Prevents text from breaking */
   animation: crt-glow 1.5s infinite alternate; /* Glowing effect */
+
+  max-width: 50%; /* Limits response to half the screen */
+  margin-left: auto; /* Ensures it doesn't exceed midline */
+  margin-right: auto; /* Centers it within the right half */
 }
 
 @keyframes crt-glow {
