@@ -137,7 +137,3 @@
   color: #33ff33; /* Bright green neon text */
   font-family: "OCR-A", "OCR-B", monospace; /* Consistent computer font */
 }
-
-:root {
-  --background: 0 0% 0%; /* Forces black */
-}
