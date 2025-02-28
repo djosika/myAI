@@ -8,11 +8,18 @@ import { AI_NAME } from "@/configuration/identity";
 
 function AILogo() {
   return (
-    <div className="w-14 h-14"> {/* Increases size */}
-      <Image src="/ai-logo.png" alt={AI_NAME} width={80} height={80} className="rounded-lg" />
+    <div className="w-16 h-16"> {/* Increase size */}
+      <Image
+        src="/ai-logo.png"
+        alt={AI_NAME}
+        width={64} /* Increase width */
+        height={64} /* Increase height */
+        className="rounded-lg object-contain"
+      />
     </div>
   );
 }
+
 
 function UserMessage({ message }: { message: DisplayMessage }) {
   return (
