@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { DisplayMessage } from "@/types";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -23,12 +24,12 @@ function UserMessage({ message }: { message: DisplayMessage }) {
       className="flex flex-1 py-1 justify-end"
     >
       <motion.div
-  whileHover={{ scale: 1.01 }}
-  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-  className="user-message"
->
-  {message.content}
-</motion.div>
+        whileHover={{ scale: 1.01 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        className="user-message"
+      >
+        {message.content}
+      </motion.div>
     </motion.div>
   );
 }
@@ -43,12 +44,12 @@ function AssistantMessage({ message }: { message: DisplayMessage }) {
     >
       <div className="w-9 flex items-end">{<AILogo />}</div>
       <motion.div
-  whileHover={{ scale: 1.01 }}
-  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-  className="ai-message"
->
-  <Formatting message={message} />
-</motion.div>
+        whileHover={{ scale: 1.01 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        className="ai-message"
+      >
+        <Formatting message={message} />
+      </motion.div>
     </motion.div>
   );
 }
@@ -60,6 +61,13 @@ function EmptyMessages() {
     </div>
   );
 }
+
+// 🎵 Beep Sound Effect Function
+const playBeep = () => {
+  const audio = new Audio("/sounds/beep.mp3"); // Make sure this file exists inside /public/sounds/
+  audio.volume = 0.5; // Adjust volume (0.0 - 1.0)
+  audio.play().catch((error) => console.error("Audio playback failed:", error)); // Prevent errors
+};
 
 export default function ChatMessages({
   messages,
@@ -73,6 +81,15 @@ export default function ChatMessages({
     messages.length > 0 &&
     messages[messages.length - 1].role === "user";
 
+  useEffect(() => {
+    if (messages.length > 0) {
+      const lastMessage = messages[messages.length - 1];
+      if (lastMessage.role === "ai") {
+        playBeep(); // Play sound when AI message appears
+      }
+    }
+  }, [messages]); // Runs every time messages update
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -85,18 +102,19 @@ export default function ChatMessages({
         <EmptyMessages />
       ) : (
         messages.map((message, index) => (
-          <motion.div
+          <div
             key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.1 }}
+            className={`message-wrapper ${message.role === "user" ? "user-align" : "ai-align"}`}
           >
-            {message.role === "user" ? (
-              <UserMessage message={message} />
-            ) : (
-              <AssistantMessage message={message} />
-            )}
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+              className={message.role === "user" ? "user-message" : "ai-message"}
+            >
+              {message.content}
+            </motion.div>
+          </div>
         ))
       )}
       {showLoading && <Loading indicatorState={indicatorState} />}
@@ -104,37 +122,3 @@ export default function ChatMessages({
     </motion.div>
   );
 }
-
-import { useEffect } from "react";
-
-const playBeep = () => {
-  const audio = new Audio("/sounds/beep.mp3"); // Path to your sound file
-  audio.volume = 0.5; // Adjust volume
-  audio.play();
-};
-
-export default function ChatMessages({ messages, indicatorState }) {
-  useEffect(() => {
-    if (messages.length > 0 && messages[messages.length - 1].role === "ai") {
-      playBeep(); // Play sound when AI message appears
-    }
-  }, [messages]);
-
-  return (
-    <div className="chat-container">
-      {messages.map((message, index) => (
-        <div key={index} className={`message-wrapper ${message.role === "user" ? "user-align" : "ai-align"}`}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.1 }}
-            className={message.role === "user" ? "user-message" : "ai-message"}
-          >
-            {message.content}
-          </motion.div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
