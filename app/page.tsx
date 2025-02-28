@@ -17,19 +17,21 @@ export default function Chat() {
   } = useApp();
 
   return (
-    <>
+    <div className="ai-bg h-screen flex flex-col">
       <ChatHeader clearMessages={clearMessages} />
-      <div className="flex justify-center items-center h-screen">
-        <div className="flex flex-col max-w-screen-lg w-full h-full p-5">
+      
+      <div className="flex justify-center items-center flex-grow">
+        <div className="flex-col max-w-screen-lg w-full h-full p-5 ai-container">
           <ChatMessages messages={messages} indicatorState={indicatorState} />
         </div>
       </div>
-      <ChatInput
+      
+      <ChatInput 
         handleInputChange={handleInputChange}
         handleSubmit={handleSubmit}
         input={input}
         isLoading={isLoading}
       />
-    </>
+    </div>
   );
 }
