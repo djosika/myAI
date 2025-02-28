@@ -63,6 +63,23 @@
   background-blend-mode: multiply; /* Darkens the texture */
 }
 
+.citation {
+  background-color: rgba(51, 255, 51, 0.15); /* Light green, subtle */
+  color: #33ff33; /* Matches AI text */
+  font-size: 0.75rem; /* Slightly smaller */
+  padding: 3px 6px;
+  border-radius: 5px; /* Less circular */
+  border: 1px solid rgba(51, 255, 51, 0.3); /* Faint green border */
+  box-shadow: none; /* Removes glow */
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Optional: Hover effect for interaction */
+.citation:hover {
+  background-color: rgba(51, 255, 51, 0.25); /* Slightly brighter on hover */
+  transform: scale(1.05);
+}
+
 
 @keyframes crt-glow {
   0% { text-shadow: 0 0 5px #33ff33; }
