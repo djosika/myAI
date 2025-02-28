@@ -83,8 +83,8 @@
 }
 
 .user-message {
-  background-color: #151515; /* Dark gray, simulating a screen frame */
-  color: #c3ffb8; /* Light green text */
+  background-color: #080808; /* Slightly lighter dark */
+  color: #33ff33; /* Green terminal text */
   font-family: "OCR-A", "OCR-B", monospace;
   padding: 10px;
   border-radius: 8px; /* Slightly rounded edges */
