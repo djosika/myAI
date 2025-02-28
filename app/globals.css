@@ -80,6 +80,24 @@
   transform: scale(1.05);
 }
 
+.user-message {
+  background-color: #005f2f; /* Dark green terminal background */
+  color: #c3ffb8; /* Light green text */
+  font-family: "OCR-A", "OCR-B", monospace; /* Classic terminal font */
+  padding: 8px 12px;
+  border-radius: 20px; /* Rounded edges */
+  border: 1px solid #33ff33; /* Subtle green border */
+  box-shadow: 0 0 8px rgba(51, 255, 51, 0.4); /* Faint green glow */
+  max-width: 60%; /* Limits message width */
+  align-self: flex-end; /* Aligns user messages to the right */
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Hover Effect */
+.user-message:hover {
+  background-color: #007a3d; /* Slightly brighter green */
+  transform: scale(1.05); /* Pop-out effect */
+}
 
 @keyframes crt-glow {
   0% { text-shadow: 0 0 5px #33ff33; }
