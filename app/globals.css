@@ -54,8 +54,8 @@
   white-space: pre-wrap; /* Prevents text from breaking */
   animation: crt-glow 1.5s infinite alternate; /* Glowing effect */
 
-  max-width: 65%; /* Increase width (Adjust as needed) */
-  margin-left: 10%; /* Pushes it more to the left */
+  max-width: 70%; /* Increase width (Adjust as needed) */
+  margin-left: -5%; /* Pushes it more to the left */
   margin-right: auto; /* Keeps it aligned to the left */
 }
 
