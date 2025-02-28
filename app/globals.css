@@ -5,7 +5,6 @@
 @layer base {
   :root {
     --background-image: url('/warhammer-bg.jpg'); /* Replace with an actual image */
-    --background-overlay: rgba(0, 0, 0, 0.6); /* Dark overlay for grimdark effect */
   }
 }
 
