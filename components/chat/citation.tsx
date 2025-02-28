@@ -34,7 +34,7 @@ export function CitationCircle({
     <Tooltip open={open} onOpenChange={setOpen}>
       <TooltipTrigger>
         <div
-          className="bg-gray-50 rounded-full px-2 py-0.5 hover:cursor-pointer hover:scale-105 inline-block"
+          className="citation"
           onClick={() => setOpen(true)}
         >
           <span>{number}</span>
