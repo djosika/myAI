@@ -84,23 +84,20 @@ export default function ChatMessages({
       {messages.length === 0 ? (
         <EmptyMessages />
       ) : (
-        messages.map((message, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.1 }}
-          >
-            {message.role === "user" ? (
-              <UserMessage message={message} />
-            ) : (
-              <AssistantMessage message={message} />
-            )}
-          </motion.div>
-        ))
-      )}
-      {showLoading && <Loading indicatorState={indicatorState} />}
-      <div className="h-[225px]"></div>
-    </motion.div>
-  );
-}
+     <div className="chat-container">
+  {messages.map((message, index) => (
+    <div key={index} className={`message-wrapper ${message.role === "user" ? "user-align" : "ai-align"}`}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: index * 0.1 }}
+      >
+        {message.role === "user" ? (
+          <UserMessage message={message} />
+        ) : (
+          <AssistantMessage message={message} />
+        )}
+      </motion.div>
+    </div>
+  ))}
+</div>
