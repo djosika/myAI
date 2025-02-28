@@ -30,7 +30,6 @@ export function Pill({
   {icon === "understanding" && "Binary Sequences Interfacing... Divining Omnissiah’s Will."}
   {icon === "documents" && "Transcribing Data-Litanies... Collating Knowledge."}
   {icon === "error" && "+++ MALFUNCTION DETECTED +++ RITUALS OF PURIFICATION REQUIRED."}
-</p>
       <p>{status}</p>
     </div>
   );
