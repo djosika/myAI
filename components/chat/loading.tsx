@@ -24,12 +24,6 @@ export function Pill({
 {icon === "understanding" && <Scan className="w-4 h-4 animate-pulse" />}
 {icon === "documents" && <FileStack className="w-4 h-4 animate-pulse" />}
 {icon === "error" && <AlertCircle className="w-4 h-4 animate-pulse text-red-500" />}
-<p>
-  {icon === "thinking" && "Cogitators Engaged... Processing Data-Streams."}
-  {icon === "searching" && "Scanning Noospheric Archives... Standby."}
-  {icon === "understanding" && "Binary Sequences Interfacing... Divining Omnissiah’s Will."}
-  {icon === "documents" && "Transcribing Data-Litanies... Collating Knowledge."}
-  {icon === "error" && "+++ MALFUNCTION DETECTED +++ RITUALS OF PURIFICATION REQUIRED."}
       <p>{status}</p>
     </div>
   );
