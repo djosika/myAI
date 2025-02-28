@@ -104,3 +104,37 @@ export default function ChatMessages({
     </motion.div>
   );
 }
+
+import { useEffect } from "react";
+
+const playBeep = () => {
+  const audio = new Audio("/sounds/beep.mp3"); // Path to your sound file
+  audio.volume = 0.5; // Adjust volume
+  audio.play();
+};
+
+export default function ChatMessages({ messages, indicatorState }) {
+  useEffect(() => {
+    if (messages.length > 0 && messages[messages.length - 1].role === "ai") {
+      playBeep(); // Play sound when AI message appears
+    }
+  }, [messages]);
+
+  return (
+    <div className="chat-container">
+      {messages.map((message, index) => (
+        <div key={index} className={`message-wrapper ${message.role === "user" ? "user-align" : "ai-align"}`}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
+            className={message.role === "user" ? "user-message" : "ai-message"}
+          >
+            {message.content}
+          </motion.div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
