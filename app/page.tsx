@@ -17,11 +17,11 @@ export default function Chat() {
   } = useApp();
 
   return (
-    <div className="ai-bg h-screen flex flex-col">
+    <div className="ai-bg min-h-screen flex flex-col">
       <ChatHeader clearMessages={clearMessages} />
       
-      <div className="flex justify-center items-center flex-grow">
-        <div className="flex-col max-w-screen-lg w-full h-full p-5 ai-container">
+      <div className="flex-grow overflow-auto">
+        <div className="flex-col max-w-screen-lg w-full mx-auto p-5 ai-container">
           <ChatMessages messages={messages} indicatorState={indicatorState} />
         </div>
       </div>
