@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/ocr-a');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -37,6 +39,6 @@
   align-items: center;
   justify-content: center;
   color: #d1d5db; /* Light grey text */
-  font-family: "Orbitron", sans-serif; /* Futuristic tech font */
-  text-shadow: 2px 2px 8px black;
+  font-family: "OCR-A", "OCR-B", monospace; /* Use OCR-A / OCR-B font */
+  text-shadow: none; /* Removes grey shadow */
 }
