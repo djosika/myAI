@@ -133,3 +133,12 @@
   pointer-events: none;
 }
 
+.ai-message, .user-message, .citation {
+  color: #33ff33; /* Bright green neon text */
+  font-family: "OCR-A", "OCR-B", monospace; /* Consistent computer font */
+}
+
+/* Ensure consistency for general text elements */
+p, span {
+  color: #33ff33; /* Makes sure all text elements are unified */
+}
