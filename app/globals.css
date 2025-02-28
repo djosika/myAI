@@ -43,74 +43,27 @@
   text-shadow: none; /* Removes grey shadow */
 }
 
-/* === Shared Message Styles (User & AI) === */
-.ai-message, .user-message {
-  background-color: #080808; /* Uniform dark, grimy cogitator screen */
-  color: #33ff33; /* Unified green terminal text */
-  font-family: "OCR-A", "OCR-B", monospace; /* Consistent font */
+.ai-message {
+  background-color: #080808; /* Slightly lighter dark */
+  color: #33ff33; /* Green terminal text */
+  font-family: "OCR-A", "OCR-B", monospace;
   padding: 12px;
-  border-radius: 6px; /* Slightly rounded for a monitor-like frame */
-  border: 8px solid #2a2a2a; /* Thick, metallic rusted frame */
+  border-radius: 8px; /* Makes it feel like an inset screen */
+  border: 5px solid #333; /* Dark metallic border */
   box-shadow: 
-    inset 0 0 8px rgba(0, 255, 0, 0.2), /* Inner green glow */
-    0 0 15px rgba(51, 255, 51, 0.5), /* Outer green glow */
-    0 0 25px rgba(0, 0, 0, 0.9); /* Deep inset shadow for depth */
+    inset 0 0 5px rgba(0, 255, 0, 0.3), /* Inner green glow */
+    0 0 10px rgba(51, 255, 51, 0.5), /* Outer glow */
+    0 0 20px rgba(0, 0, 0, 0.8); /* Deep shadow for depth */
+  white-space: pre-wrap;
+  animation: crt-glow 1.5s infinite alternate; /* Glowing effect */
 
   max-width: 65%;
-  margin-left: auto;
+  margin-left: -5%;
   margin-right: auto;
 
-  /* Apply a rusted metal texture */
-  background-image: 
-    url('https://www.transparenttextures.com/patterns/dirty-old-black-paper.png'), 
-    url('https://www.transparenttextures.com/patterns/brushed-alum.png'); /* Adds grunge & brushed metal effect */
-  background-blend-mode: multiply;
+  background-image: url('https://www.transparenttextures.com/patterns/brushed-alum.png'); /* Subtle metallic texture */
+  background-blend-mode: multiply; /* Blends texture into the background */
 }
-
-/* === AI Message Positioning (Left) === */
-.ai-message {
-  align-self: flex-start;
-}
-
-/* === User Message Positioning (Right) === */
-.user-message {
-  align-self: flex-end;
-}
-
-/* === Citations (Matching Style) === */
-.citation {
-  background-color: rgba(51, 255, 51, 0.15); /* Soft glow */
-  color: #33ff33; /* Matches text */
-  font-size: 0.75rem;
-  padding: 3px 6px;
-  border-radius: 5px;
-  border: 1px solid rgba(51, 255, 51, 0.3); /* Subtle border */
-  box-shadow: none; /* No glow */
-  transition: background-color 0.3s ease-in-out;
-}
-
-/* === Optional: CRT Scanline Effect (Adds Immersion) === */
-@keyframes scanlines {
-  0% { background-position: 0 0; }
-  100% { background-position: 0 100px; }
-}
-
-.ai-message::after, .user-message::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    transparent,
-    rgba(0, 255, 0, 0.02) 2px,
-    transparent 4px
-  );
-  animation: scanlines 5s linear infinite;
-  pointer-events: none;
-}
-
 
 .citation {
   background-color: rgba(51, 255, 51, 0.15); /* Light green, subtle */
@@ -127,6 +80,25 @@
 .citation:hover {
   background-color: rgba(51, 255, 51, 0.25); /* Slightly brighter on hover */
   transform: scale(1.05);
+}
+
+.user-message {
+  background-color: #080808; /* Slightly lighter dark */
+  color: #33ff33; /* Green terminal text */
+  font-family: "OCR-A", "OCR-B", monospace;
+  padding: 10px;
+  border-radius: 8px; /* Slightly rounded edges */
+  border: 5px solid #444; /* Hard metallic frame */
+  box-shadow: 
+    inset 0 0 5px rgba(0, 255, 0, 0.2), /* Faint green glow */
+    0 0 10px rgba(51, 255, 51, 0.4), /* Outer green glow */
+    0 0 20px rgba(0, 0, 0, 0.8); /* Deep inset shadow for depth */
+  max-width: 60%;
+  align-self: flex-end;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+
+  background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre-v2.png'); /* Adds rugged texture */
+  background-blend-mode: multiply;
 }
 
 @keyframes crt-glow {
