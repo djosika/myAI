@@ -137,11 +137,3 @@
   color: #33ff33; /* Bright green neon text */
   font-family: "OCR-A", "OCR-B", monospace; /* Consistent computer font */
 }
-
-.ai-message {
-  align-self: flex-start;  /* Keeps AI messages more left-aligned */
-}
-
-.user-message {
-  align-self: flex-end; /* Keeps user messages more right-aligned */
-}
