@@ -56,7 +56,7 @@ function AssistantMessage({ message }: { message: DisplayMessage }) {
 
 function EmptyMessages() {
   return (
-    <div className="absolute top-29 left-1/2 -translate-x-1/2 px-6 py-2 bg-black border border-green-600 text-green-400 font-mono text-lg rounded-md shadow-lg whitespace-nowrap">
+    <div className="absolute top-24 left-1/2 -translate-x-1/2 px-6 py-2 bg-black border border-green-600 text-green-400 font-mono text-lg rounded-md shadow-lg whitespace-nowrap">
       Awaiting input...Please submit your inquiry below.
     </div>
   );
