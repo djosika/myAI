@@ -56,10 +56,8 @@ function AssistantMessage({ message }: { message: DisplayMessage }) {
 
 function EmptyMessages() {
   return (
-    <div className="flex flex-col flex-1 p-3 gap-3 justify-center items-center">
-      <p className="text-green-400 font-mono text-lg bg-black px-4 py-2 rounded-md border border-green-600 shadow-lg">
-        [ Awaiting input...Please engage in the Omnissiah's wisdom. ]
-      </p>
+    <div className="absolute top-20 left-1/2 -translate-x-1/2 px-4 py-2 bg-black border border-green-600 text-green-400 font-mono text-lg rounded-md shadow-lg">
+      [ Awaiting input... Please engage in the Omnissiah's wisdom. ]
     </div>
   );
 }
