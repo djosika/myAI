@@ -62,7 +62,7 @@ function EmptyMessages() {
            backgroundImage: "url('https://www.transparenttextures.com/patterns/brushed-alum.png')",
            backgroundBlendMode: "multiply"
          }}>
-      [ Awaiting input... Please engage in the Omnissiah's wisdom. ]
+      Awaiting input - submit your sacred inquries below.
     </div>
   );
 }
