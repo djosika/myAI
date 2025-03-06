@@ -39,7 +39,7 @@ export function Pill({
         <AlertCircle className="w-4 h-4 animate-pulse text-red-500" />
       )}
 
-      <p className="tracking-wide shadow-black/50 text-lg">
+      <p className="tracking-wide shadow-black text-lg">
         {icon === "thinking" && "[+] Cogitation-Rite Initiated..."}
         {icon === "searching" && "[~] Scanning Lexicanum..."}
         {icon === "understanding" && "[#] Deciphering Data-Wafers..."}
@@ -85,7 +85,7 @@ export default function Loading({
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="tracking-wide shadow-black/50 text-lg"
+              className="tracking-wide shadow-black text-lg"
             >
               {msg}
             </motion.p>
