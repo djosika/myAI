@@ -25,8 +25,8 @@ export function Pill({
   return (
     <motion.div
       className={`flex flex-row gap-2 items-center font-mono text-sm font-bold ${
-        isDone ? "text-green-400" : "text-green-400 animate-pulse"
-      } ${isError ? "text-red-400" : ""}`}
+        isDone ? "text-green-700" : "text-green-700 animate-pulse"
+      } ${isError ? "text-red-500" : ""}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
@@ -39,7 +39,7 @@ export function Pill({
         <AlertCircle className="w-4 h-4 animate-pulse text-red-500" />
       )}
 
-      <p className="tracking-wide shadow-black/90 text-lg">
+      <p className="tracking-wide shadow-black text-lg bg-black/50 p-1 rounded-md">
         {icon === "thinking" && "[+] Cogitation-Rite Initiated..."}
         {icon === "searching" && "[~] Scanning Lexicanum..."}
         {icon === "understanding" && "[#] Deciphering Data-Wafers..."}
@@ -75,17 +75,17 @@ export default function Loading({
     <motion.div
       whileHover={{ scale: 1.01 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="py-1 max-w-[60%] transition-shadow duration-300 text-green-400 font-mono font-bold"
+      className="py-1 max-w-[60%] transition-shadow duration-300 text-green-700 font-mono font-bold"
     >
       {!bootUpComplete ? (
-        <div className="text-green-400 animate-fade-in">
+        <div className="text-green-700 animate-fade-in">
           {displayedMessages.map((msg, index) => (
             <motion.p
               key={index}
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="tracking-wide shadow-black/90 text-lg"
+              className="tracking-wide shadow-black text-lg bg-black/50 p-1 rounded-md"
             >
               {msg}
             </motion.p>
