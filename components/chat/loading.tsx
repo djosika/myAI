@@ -19,15 +19,25 @@ export function Pill({
         isDone ? "text-gray-200" : "text-gray-400 animate-pulse"
       } ${isError ? "text-red-500" : ""}`}
     >
-{icon === "thinking" && <Brain className="w-4 h-4 animate-pulse" />}
-{icon === "searching" && <FileSearch className="w-4 h-4 animate-pulse" />}
-{icon === "understanding" && <Scan className="w-4 h-4 animate-pulse" />}
-{icon === "documents" && <FileStack className="w-4 h-4 animate-pulse" />}
-{icon === "error" && <AlertCircle className="w-4 h-4 animate-pulse text-red-500" />}
-      <p>{status}</p>
+      {icon === "thinking" && <Brain className="w-4 h-4 animate-pulse" />}
+      {icon === "searching" && <FileSearch className="w-4 h-4 animate-pulse" />}
+      {icon === "understanding" && <Scan className="w-4 h-4 animate-pulse" />}
+      {icon === "documents" && <FileStack className="w-4 h-4 animate-pulse" />}
+      {icon === "error" && (
+        <AlertCircle className="w-4 h-4 animate-pulse text-red-500" />
+      )}
+
+      <p>
+        {icon === "thinking" && "Cogitation-Rite Initiated..."}
+        {icon === "searching" && "Scanning Knowledge Base..."}
+        {icon === "understanding" && "Calculating Sacred Texts..."}
+        {icon === "documents" && "Data-scrolls Access Granted..."}
+        {icon === "error" && "Error! Corruption!"}
+      </p>
     </div>
   );
 }
+
 
 export default function Loading({
   indicatorState,
