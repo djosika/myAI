@@ -53,7 +53,9 @@ function AssistantMessage({ message }: { message: DisplayMessage }) {
   );
 }
 
-<div 
+function EmptyMessages() {
+  return (
+    <div 
   className="absolute left-1/2 -translate-x-1/2 px-6 py-3 bg-[#080808] border-4 border-[#333] text-[#33ff33] font-['OCR-A',_monospace] text-lg rounded-lg shadow-lg whitespace-nowrap overflow-hidden"
   style={{
     top: "66px", // Adjust this for fine-tuning
@@ -94,7 +96,6 @@ function AssistantMessage({ message }: { message: DisplayMessage }) {
     `}
   </style>
 </div>
-
 
 export default function ChatMessages({
   messages,
