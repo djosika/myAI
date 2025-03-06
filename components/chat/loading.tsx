@@ -15,8 +15,8 @@ export function Pill({
 }) {
   return (
     <div
-      className={`flex flex-row gap-2 items-center ${
-        isDone ? "text-gray-200" : "text-gray-400 animate-pulse"
+      className={`flex flex-row gap-2 items-center font-mono text-sm ${
+        isDone ? "text-green-400" : "text-green-600 animate-pulse"
       } ${isError ? "text-red-500" : ""}`}
     >
       {icon === "thinking" && <Brain className="w-4 h-4 animate-pulse" />}
@@ -27,17 +27,16 @@ export function Pill({
         <AlertCircle className="w-4 h-4 animate-pulse text-red-500" />
       )}
 
-      <p>
-        {icon === "thinking" && "Cogitation-Rite Initiated..."}
-        {icon === "searching" && "Scanning Knowledge Base..."}
-        {icon === "understanding" && "Calculating Sacred Texts..."}
-        {icon === "documents" && "Data-scrolls Access Granted..."}
-        {icon === "error" && "Error! Corruption!"}
+      <p className="tracking-wider">
+        {icon === "thinking" && "[+] Cogitation-Rite Initiated..."}
+        {icon === "searching" && "[~] Scanning Lexicanum..."}
+        {icon === "understanding" && "[#] Deciphering Data-Wafers..."}
+        {icon === "documents" && "[>] Noospheric Link Established..."}
+        {icon === "error" && "[!] Error: Machine-Spirit Corruption Detected!"}
       </p>
     </div>
   );
 }
-
 
 export default function Loading({
   indicatorState,
