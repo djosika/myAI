@@ -25,8 +25,8 @@ export function Pill({
   return (
     <motion.div
       className={`flex flex-row gap-2 items-center font-mono text-sm font-bold ${
-        isDone ? "text-green-500" : "text-green-500 animate-pulse"
-      } ${isError ? "text-red-500" : ""}`}
+        isDone ? "text-green-400" : "text-green-400 animate-pulse"
+      } ${isError ? "text-red-400" : ""}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
@@ -75,10 +75,10 @@ export default function Loading({
     <motion.div
       whileHover={{ scale: 1.01 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="py-1 max-w-[60%] transition-shadow duration-300 text-green-500 font-mono font-bold"
+      className="py-1 max-w-[60%] transition-shadow duration-300 text-green-400 font-mono font-bold"
     >
       {!bootUpComplete ? (
-        <div className="text-green-500 animate-fade-in">
+        <div className="text-green-400 animate-fade-in">
           {displayedMessages.map((msg, index) => (
             <motion.p
               key={index}
