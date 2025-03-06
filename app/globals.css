@@ -4,12 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Root Variables */
 @layer base {
   :root {
     --background-image: url('/warhammer-bg.jpg'); /* Replace with an actual image */
   }
 }
 
+/* Background Image */
 .ai-bg {
   background-image: var(--background-image);
   background-size: cover;
@@ -18,7 +20,7 @@
   background-attachment: fixed; /* Keeps the background fixed in place */
 }
 
-
+/* Dark Overlay */
 .ai-bg::before {
   content: "";
   position: absolute;
@@ -30,69 +32,70 @@
   z-index: 0;
 }
 
+/* Ensure Header is Always Visible & Defined */
+.header {
+  min-height: 80px; /* Prevents chatbot from overlapping */
+  position: relative;
+  z-index: 50;
+}
+
+/* Chatbot Container - Prevent Overlap on Mobile */
 .ai-container {
   position: relative;
   z-index: 1;
-  min-height: 100vh;
+  min-height: calc(100vh - 80px); /* Adjusts for header height */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* Prevents center alignment issues */
+  padding-top: 6rem; /* Ensures chatbot is not under the header */
   color: #d1d5db; /* Light grey text */
-  font-family: "OCR-A", "OCR-B", monospace; /* Use OCR-A / OCR-B font */
+  font-family: "OCR-A", "OCR-B", monospace;
   text-shadow: none; /* Removes grey shadow */
 }
 
+/* Mobile-Specific Spacing Fix */
+@media (max-width: 768px) {
+  .ai-container {
+    padding-top: 7rem; /* Pushes chatbot down further on smaller screens */
+  }
+}
+
+/* AI Message Styling */
 .ai-message {
   background-color: #080808; /* Slightly lighter dark */
   color: #33ff33; /* Green terminal text */
   font-family: "OCR-A", "OCR-B", monospace;
   padding: 12px;
-  border-radius: 8px; /* Makes it feel like an inset screen */
+  border-radius: 8px; /* Rounded to feel like a terminal */
   border: 5px solid #333; /* Dark metallic border */
   box-shadow: 
     inset 0 0 5px rgba(0, 255, 0, 0.3), /* Inner green glow */
     0 0 10px rgba(51, 255, 51, 0.5), /* Outer glow */
     0 0 20px rgba(0, 0, 0, 0.8); /* Deep shadow for depth */
   white-space: pre-wrap;
-  animation: crt-glow 1.5s infinite alternate; /* Glowing effect */
+  animation: crt-glow 1.5s infinite alternate;
 
   max-width: 65%;
   margin-left: -5%;
   margin-right: auto;
 
   background-image: url('https://www.transparenttextures.com/patterns/brushed-alum.png'); /* Subtle metallic texture */
-  background-blend-mode: multiply; /* Blends texture into the background */
+  background-blend-mode: multiply;
 }
 
-.citation {
-  background-color: rgba(51, 255, 51, 0.15); /* Light green, subtle */
-  color: #33ff33; /* Matches AI text */
-  font-size: 0.75rem; /* Slightly smaller */
-  padding: 3px 6px;
-  border-radius: 5px; /* Less circular */
-  border: 1px solid rgba(51, 255, 51, 0.3); /* Faint green border */
-  box-shadow: none; /* Removes glow */
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-}
-
-/* Optional: Hover effect for interaction */
-.citation:hover {
-  background-color: rgba(51, 255, 51, 0.25); /* Slightly brighter on hover */
-  transform: scale(1.05);
-}
-
+/* User Message Styling */
 .user-message {
-  background-color: #080808; /* Slightly lighter dark */
+  background-color: #080808;
   color: #33ff33; /* Green terminal text */
   font-family: "OCR-A", "OCR-B", monospace;
   padding: 10px;
-  border-radius: 8px; /* Slightly rounded edges */
+  border-radius: 8px;
   border: 5px solid #444; /* Hard metallic frame */
   box-shadow: 
-    inset 0 0 5px rgba(0, 255, 0, 0.2), /* Faint green glow */
-    0 0 10px rgba(51, 255, 51, 0.4), /* Outer green glow */
-    0 0 20px rgba(0, 0, 0, 0.8); /* Deep inset shadow for depth */
+    inset 0 0 5px rgba(0, 255, 0, 0.2), 
+    0 0 10px rgba(51, 255, 51, 0.4), 
+    0 0 20px rgba(0, 0, 0, 0.8);
   max-width: 60%;
   align-self: flex-end;
   transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
@@ -101,17 +104,38 @@
   background-blend-mode: multiply;
 }
 
+/* Citations */
+.citation {
+  background-color: rgba(51, 255, 51, 0.15);
+  color: #33ff33;
+  font-size: 0.75rem;
+  padding: 3px 6px;
+  border-radius: 5px;
+  border: 1px solid rgba(51, 255, 51, 0.3);
+  box-shadow: none;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Citation Hover Effect */
+.citation:hover {
+  background-color: rgba(51, 255, 51, 0.25);
+  transform: scale(1.05);
+}
+
+/* CRT Glow Effect */
 @keyframes crt-glow {
   0% { text-shadow: 0 0 5px #33ff33; }
   50% { text-shadow: 0 0 10px #33ff33; }
   100% { text-shadow: 0 0 5px #33ff33; }
 }
 
+/* Scanlines Effect */
 @keyframes scanlines {
   0% { background-position: 0 0; }
   100% { background-position: 0 100px; }
 }
 
+/* Apply Scanlines to AI & User Messages */
 .ai-message, .user-message {
   position: relative;
   overflow: hidden;
@@ -133,7 +157,8 @@
   pointer-events: none;
 }
 
+/* Ensure Text is Consistently Neon Green */
 .ai-message, .user-message, .citation {
-  color: #33ff33; /* Bright green neon text */
-  font-family: "OCR-A", "OCR-B", monospace; /* Consistent computer font */
+  color: #33ff33;
+  font-family: "OCR-A", "OCR-B", monospace;
 }
