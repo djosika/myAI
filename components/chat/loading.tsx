@@ -1,11 +1,9 @@
-import { LoadingIndicator, IndicatorIconType } from "@/types";
-import { motion } from "framer-motion";
-import { Brain, FileStack, FileSearch, Scan, AlertCircle } from "lucide-react";
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Brain, FileStack, FileSearch, Scan, AlertCircle } from "lucide-react";
+import { LoadingIndicator, IndicatorIconType } from "@/types";
 
+// Boot-up sequence messages
 const bootMessages = [
   "[✓] Machine-Spirit Activation Protocol...",
   "[✓] Data-Wafers Loaded...",
@@ -20,7 +18,7 @@ export function Pill({
   isDone,
 }: {
   status: string;
-  icon: string;
+  icon: IndicatorIconType;
   isError: boolean;
   isDone: boolean;
 }) {
@@ -55,7 +53,7 @@ export function Pill({
 export default function Loading({
   indicatorState,
 }: {
-  indicatorState: { status: string; icon: string }[];
+  indicatorState: LoadingIndicator[];
 }) {
   const [bootUpComplete, setBootUpComplete] = useState(false);
   const [displayedMessages, setDisplayedMessages] = useState<string[]>([]);
@@ -84,9 +82,9 @@ export default function Loading({
           {displayedMessages.map((msg, index) => (
             <motion.p
               key={index}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
             >
               {msg}
             </motion.p>
@@ -103,32 +101,6 @@ export default function Loading({
           />
         ))
       )}
-    </motion.div>
-  );
-}
-
-export default function Loading({
-  indicatorState,
-}: {
-  indicatorState: LoadingIndicator[];
-}) {
-  return (
-    <motion.div
-      whileHover={{ scale: 1.01 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="py-1 max-w-[60%] transition-shadow duration-300"
-    >
-      {indicatorState.map((indicator, index) => {
-        return (
-          <Pill
-            key={indicator.status}
-            status={indicator.status}
-            icon={indicator.icon}
-            isError={indicator.icon === "error"}
-            isDone={index !== indicatorState.length - 1}
-          />
-        );
-      })}
     </motion.div>
   );
 }
