@@ -73,7 +73,7 @@ function EmptyMessages() {
         }}
       ></div>
       <div className="scrolling-text">
-        Awaiting input - submit your sacred inquiries below.
+        Submit your sacred inquiries below.
       </div>
       <style>
         {`
