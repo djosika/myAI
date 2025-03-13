@@ -13,27 +13,27 @@ export const AILogo = () => (
 
 export default function ChatHeader({ clearMessages }: { clearMessages: () => void }) {
   return (
-    <div className="fixed top-0 w-full z-10 flex justify-center items-center p-5 bg-white shadow-[0_10px_15px_-3px_rgba(255,255,255,1)]">
-      <div className="flex w-full">
-        {/* Left spacing block */}
-        <div className="flex-0 w-auto"></div>
-
-        {/* Center section with AI logo and header text */}
-        <div className="flex-1 flex justify-center items-center gap-2">
+    <div className="fixed top-0 w-full z-10 bg-white shadow-md p-5">
+      {/* Container for both layouts */}
+      <div className="flex flex-col sm:flex-row items-center sm:justify-between w-full">
+        
+        {/* AI Logo & Header Text - Always Centered */}
+        <div className="flex flex-col items-center sm:flex-row sm:items-center gap-2">
           <AILogo />
-          <p>{CHAT_HEADER}</p>
+          <p className="text-center sm:text-left">{CHAT_HEADER}</p>
         </div>
 
-        {/* Right section with button */}
-        <div className="flex-0 w-auto flex justify-end items-center">
+        {/* Button Section - Centered on Mobile, Right-Aligned on Desktop */}
+        <div className="w-full sm:w-auto flex justify-center sm:justify-end mt-2 sm:mt-0">
           <Button
             onClick={clearMessages}
-            className="gap-2 shadow-sm whitespace-nowrap px-6 py-3"
+            className="gap-2 shadow-sm whitespace-nowrap px-6 py-3 sm:px-4 sm:py-2"
             variant="outline"
             size="lg"
           >
-            <EraserIcon className="w-4 h-4" />
-            <span>{CLEAR_BUTTON_TEXT}</span>
+            <EraserIcon className="w-4 h-4 sm:w-3 sm:h-3" />
+            <span className="sm:hidden">Terminate</span> 
+            <span className="hidden sm:inline">{CLEAR_BUTTON_TEXT}</span> 
           </Button>
         </div>
       </div>
