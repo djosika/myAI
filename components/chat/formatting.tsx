@@ -33,13 +33,13 @@ p: ({ children }: { children: React.ReactNode }) => (
   <p>
     {renderCitations(children, message.citations)}
   </p>
-)
+),  // ✅ Add this comma
 
-    strong: ({ children }: { children: React.ReactNode }) => (
-      <strong>
-        {renderCitations(children, message.citations)}
-      </strong>
-    ),
+strong: ({ children }: { children: React.ReactNode }) => (
+  <strong>
+    {renderCitations(children, message.citations)}
+  </strong>
+),
 
     li: ({ children }: { children: React.ReactNode }) => (
       <li>
