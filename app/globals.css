@@ -67,7 +67,7 @@
 
 /* Web-Specific Fix: Move Initial User Prompt Box Down */
 @media (min-width: 769px) {
-  .initial-user-prompt {
+  .empty-messages {
     margin-top: 20px; /* Adjust value to move it down slightly */
   }
 }
