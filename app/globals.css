@@ -17,14 +17,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: scroll; /* Prevents fixed behavior issues on mobile */
-}
-
-/* Ensure Background Scales Properly */
-@media (max-width: 768px) {
-  .ai-bg {
-    background-size: contain; /* Ensures the full image is visible */
-  }
+  background-attachment: fixed; /* Reverting to original fixed background */
 }
 
 /* Dark Overlay */
@@ -83,12 +76,12 @@
     0 0 20px rgba(0, 0, 0, 0.8);
   white-space: pre-wrap;
   animation: crt-glow 1.5s infinite alternate;
-  max-width: 80%; /* Improved responsiveness */
+  max-width: 80%;
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 16px; /* Prevents citations from being cut off */
   position: relative;
-  overflow: visible; /* Allows citations to extend properly */
+  overflow: visible;
   
   background-image: url('https://www.transparenttextures.com/patterns/brushed-alum.png');
   background-blend-mode: multiply;
