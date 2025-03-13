@@ -38,14 +38,19 @@ export function CitationCircle({
           <span>{number}</span>
         </span>
       </TooltipTrigger>
-      <TooltipContent className="tooltip-content">
-        <div className="bg-white p-2 rounded-md shadow-sm flex flex-col justify-center border-[1px] border-gray-200">
-          <p>
+      <TooltipContent
+        className="tooltip-content"
+        side="top" /* Ensures tooltip appears above citation */
+        align="center"
+        sideOffset={5} /* Prevents tooltip from overlapping text */
+      >
+        <div className="bg-white p-2 rounded-md shadow-sm flex flex-col justify-center border border-gray-200 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
+          <p className="text-sm">
             {hasSourceUrl ? (
               <Link
                 href={citation.source_url}
                 target="_blank"
-                className="text-blue-500 hover:underline text-sm"
+                className="text-blue-500 hover:underline"
               >
                 {citation.source_description}
               </Link>
