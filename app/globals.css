@@ -17,7 +17,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* Reverting to original fixed background */
+  background-attachment: fixed; /* Keeps background fixed */
 }
 
 /* Dark Overlay */
@@ -39,7 +39,7 @@
   z-index: 50;
 }
 
-/* Chatbot Container - Prevent Overlap on Mobile */
+/* Chatbot Container - Prevents Overlap with Header */
 .ai-container {
   position: relative;
   z-index: 1;
@@ -51,6 +51,9 @@
   padding: 6rem 1rem;
   color: #d1d5db;
   font-family: "OCR-A", "OCR-B", monospace;
+  
+  /* Push content below the fixed header */
+  margin-top: 100px; 
 }
 
 /* Mobile-Specific Adjustments */
@@ -59,6 +62,9 @@
     padding-top: 4rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+
+    /* Ensures enough space below the header */
+    margin-top: 150px;
   }
 }
 
@@ -79,7 +85,7 @@
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 16px; /* Prevents citations from being cut off */
+  padding-bottom: 16px;
   position: relative;
   overflow: visible;
   
