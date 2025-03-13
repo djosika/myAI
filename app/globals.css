@@ -130,19 +130,18 @@
   background-color: rgba(51, 255, 51, 0.15);
   color: #33ff33;
   font-size: 0.75rem;
-  padding: 0 3px; /* Reduce excess padding */
+  padding: 0 3px; /* Minimized padding */
   border-radius: 5px;
   border: 1px solid rgba(51, 255, 51, 0.3);
-  display: inline-flex; /* Keeps it inline without unnecessary gaps */
-  align-items: center; /* Ensures proper text alignment */
+  display: inline-flex; /* Keeps it inline and aligned properly */
+  align-items: center;
   justify-content: center;
-  white-space: nowrap; /* Prevents unwanted line breaks */
-  margin: 0 2px; /* Fine-tunes spacing */
-  line-height: 1; /* Ensures it aligns with text properly */
-  vertical-align: middle; /* Keeps it level with text */
+  white-space: nowrap; /* Ensures it doesn’t break onto a new line */
+  margin: 0 2px; /* Fine-tuned spacing */
+  line-height: 1; /* Prevents vertical misalignment */
+  vertical-align: middle; /* Keeps it level with surrounding text */
 }
 
-/* Citation Hover Effect */
 .citation:hover {
   background-color: rgba(51, 255, 51, 0.25);
   transform: scale(1.05);
@@ -152,8 +151,14 @@
 @media (max-width: 768px) {
   .citation {
     font-size: 0.7rem;
-    padding: 1px 4px;
+    padding: 0 2px;
   }
+}
+
+/* Tooltip Content Styling */
+.tooltip-content {
+  white-space: normal; /* Ensures tooltip content doesn't affect text flow */
+  word-wrap: break-word;
 }
 
 /* CRT Glow Effect */
