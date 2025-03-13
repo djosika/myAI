@@ -65,6 +65,13 @@
   }
 }
 
+/* Web-Specific Fix: Move Initial User Prompt Box Down */
+@media (min-width: 769px) {
+  .initial-user-prompt {
+    margin-top: 20px; /* Adjust value to move it down slightly */
+  }
+}
+
 /* AI Message Styling */
 .ai-message {
   background-color: #080808;
