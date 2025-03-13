@@ -9,6 +9,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 export function Formatting({ message }: { message: DisplayMessage }) {
   const processedContent = preprocessLaTeX(message.content);
+
   const components = {
     code: ({ children, className, node, ...rest }: any) => {
       const match = /language-(\w+)/.exec(className || "");
@@ -17,29 +18,36 @@ export function Formatting({ message }: { message: DisplayMessage }) {
           {...rest}
           PreTag="div"
           className="rounded-xl"
-          children={String(children).replace(/\n$/, "")}
           language={match[1]}
-        />
+        >
+          {String(children).replace(/\n$/, "")}
+        </SyntaxHighlighter>
       ) : (
         <code {...rest} className={className}>
           {children}
         </code>
       );
     },
-    p: ({ children }: { children: React.ReactNode }) => {
-      return renderCitations(children, message.citations);
-    },
-    strong: ({ children }: { children: React.ReactNode }) => {
-      return (
-        <span className="font-bold">
-          {renderCitations(children, message.citations)}
-        </span>
-      );
-    },
-    li: ({ children }: { children: React.ReactNode }) => {
-      return renderCitations(children, message.citations);
-    },
+
+    p: ({ children }: { children: React.ReactNode }) => (
+      <p>
+        {renderCitations(children, message.citations)}
+      </p>
+    ),
+
+    strong: ({ children }: { children: React.ReactNode }) => (
+      <strong>
+        {renderCitations(children, message.citations)}
+      </strong>
+    ),
+
+    li: ({ children }: { children: React.ReactNode }) => (
+      <li>
+        {renderCitations(children, message.citations)}
+      </li>
+    ),
   };
+
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm, remarkMath]}
