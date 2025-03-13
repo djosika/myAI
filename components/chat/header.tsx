@@ -24,14 +24,13 @@ export default function ChatHeader({ clearMessages }: { clearMessages: () => voi
       {/* Button Section - Centered Below */}
       <div className="mt-2">
         <Button
-          onClick={clearMessages}
-          className="gap-2 shadow-sm whitespace-nowrap px-6 py-3 sm:px-4 sm:py-2"
-          variant="outline"
-          size="lg"
-        >
-          <EraserIcon className="w-4 h-4 sm:w-3 sm:h-3" />
-          <span className="sm:hidden">Terminate</span>
-          <span className="hidden sm:inline">{CLEAR_BUTTON_TEXT}</span>
+  onClick={clearMessages}
+  className="gap-2 shadow-sm whitespace-nowrap px-6 py-3 sm:px-4 sm:py-2"
+  variant="outline"
+  size="lg"
+>
+  <EraserIcon className="w-4 h-4 sm:w-3 sm:h-3" />
+  <span>{CLEAR_BUTTON_TEXT}</span>
         </Button>
       </div>
 
