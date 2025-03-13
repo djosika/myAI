@@ -13,30 +13,28 @@ export const AILogo = () => (
 
 export default function ChatHeader({ clearMessages }: { clearMessages: () => void }) {
   return (
-    <div className="fixed top-0 w-full z-10 bg-white shadow-md p-5 sm:p-4">
-      {/* Container - Stacks elements on mobile, horizontal on desktop */}
-      <div className="flex flex-col sm:flex-row items-center sm:justify-between w-full space-y-2 sm:space-y-0">
-        
-        {/* AI Logo & Header Text - Centered on mobile */}
-        <div className="flex flex-col items-center sm:flex-row sm:items-center gap-2">
-          <AILogo />
-          <p className="text-center sm:text-left">{CHAT_HEADER}</p>
-        </div>
-
-        {/* Button Section - Centered on Mobile, Right on Desktop */}
-        <div className="w-full sm:w-auto flex justify-center sm:justify-end">
-          <Button
-            onClick={clearMessages}
-            className="gap-2 shadow-sm whitespace-nowrap px-6 py-3 sm:px-4 sm:py-2 mt-2 sm:mt-0"
-            variant="outline"
-            size="lg"
-          >
-            <EraserIcon className="w-4 h-4 sm:w-3 sm:h-3" />
-            <span className="sm:hidden">Terminate</span>
-            <span className="hidden sm:inline">{CLEAR_BUTTON_TEXT}</span>
-          </Button>
-        </div>
+    <div className="fixed top-0 w-full z-10 bg-white shadow-md p-4 sm:p-4 flex flex-col items-center justify-center">
+      
+      {/* AI Logo & Header Text - Centered */}
+      <div className="flex flex-col items-center gap-2">
+        <AILogo />
+        <p className="text-center">{CHAT_HEADER}</p>
       </div>
+
+      {/* Button Section - Centered Below */}
+      <div className="mt-2">
+        <Button
+          onClick={clearMessages}
+          className="gap-2 shadow-sm whitespace-nowrap px-6 py-3 sm:px-4 sm:py-2"
+          variant="outline"
+          size="lg"
+        >
+          <EraserIcon className="w-4 h-4 sm:w-3 sm:h-3" />
+          <span className="sm:hidden">Terminate</span>
+          <span className="hidden sm:inline">{CLEAR_BUTTON_TEXT}</span>
+        </Button>
+      </div>
+
     </div>
   );
 }
