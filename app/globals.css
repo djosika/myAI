@@ -133,7 +133,7 @@
   }
 }
 
-/* Citations */
+/* Citations - Fix Misalignment Issues */
 .citation {
   background-color: rgba(51, 255, 51, 0.15);
   color: #33ff33;
@@ -143,10 +143,11 @@
   border: 1px solid rgba(51, 255, 51, 0.3);
   box-shadow: none;
   transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-  display: inline-block;
-  white-space: nowrap;
-  margin: 4px 0;
-  max-width: 100%;
+  
+  display: inline-block; /* Ensures inline behavior */
+  vertical-align: baseline; /* Aligns properly with text */
+  margin-left: 4px; /* Adds spacing so citation isn’t too close */
+  white-space: nowrap; /* Prevents wrapping issues */
 }
 
 /* Citation Hover Effect */
