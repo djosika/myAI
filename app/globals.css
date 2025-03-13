@@ -51,19 +51,16 @@
   padding: 6rem 1rem;
   color: #d1d5db;
   font-family: "OCR-A", "OCR-B", monospace;
-  
-  /* Push content below the fixed header */
-  margin-top: 100px; 
 }
 
-/* Mobile-Specific Adjustments */
+/* Mobile-Specific Fix: Push Messages Below Header */
 @media (max-width: 768px) {
   .ai-container {
     padding-top: 4rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 
-    /* Ensures enough space below the header */
+    /* Moves content down so it's not hidden under the header */
     margin-top: 150px;
   }
 }
