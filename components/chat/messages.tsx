@@ -50,7 +50,7 @@ function AssistantMessage({ message }: { message: DisplayMessage }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="flex flex-1 py-1 justify-start items-center gap-3"
+      className="flex flex-1 py-1 justify-start items-center gap-3 border border-blue-500 p-2"
     >
       {console.log("Calling AILogo inside AssistantMessage")}
       <AILogo />
@@ -111,6 +111,10 @@ export default function ChatMessages({
       className="flex flex-col flex-1 p-1 gap-3"
     >
       <div className="h-[60px]"></div>
+
+      {/* 🚀 Force AILogo to render at the top to test if it's working */}
+      <AILogo />  
+
       {messages.length === 0 ? (
         <EmptyMessages />
       ) : (
@@ -121,6 +125,7 @@ export default function ChatMessages({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.1 }}
           >
+            {console.log(`Rendering message ${index}:`, message)}
             {message.role === "user" ? (
               <UserMessage message={message} />
             ) : (
