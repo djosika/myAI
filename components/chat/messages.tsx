@@ -7,11 +7,18 @@ import Loading from "./loading";
 import { AI_NAME } from "@/configuration/identity";
 
 function AILogo() {
+  console.log("AILogo component is being rendered!");
+
   return (
-    <div className="w-9 h-9 border border-red-500 bg-blue-500 flex items-center justify-center">
-      {console.log("Rendering AILogo")}
-      {/* Replacing Next.js <Image> with <img> to test */}
-      <img src="/ai-logo.png" alt={AI_NAME} width="48" height="48" onError={(e) => console.error("Image failed to load", e)} />
+    <div className="w-20 h-20 border-4 border-red-500 bg-yellow-300 flex items-center justify-center">
+      <p className="text-black font-bold">AI</p>
+      <img 
+        src="/ai-logo.png" 
+        alt={AI_NAME} 
+        width="48" 
+        height="48" 
+        onError={(e) => console.error("❌ Image failed to load", e)} 
+      />
     </div>
   );
 }
