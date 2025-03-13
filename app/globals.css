@@ -17,7 +17,14 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* Keeps the background fixed in place */
+  background-attachment: scroll; /* Prevents fixed behavior issues on mobile */
+}
+
+/* Ensure Background Scales Properly */
+@media (max-width: 768px) {
+  .ai-bg {
+    background-size: contain; /* Ensures the full image is visible */
+  }
 }
 
 /* Dark Overlay */
@@ -32,13 +39,14 @@
   z-index: 0;
 }
 
-/* Ensure Header is Always Visible & Defined */
+/* Ensure Header is Always Visible */
 .header {
-  min-height: 80px; /* Prevents chatbot from overlapping */
+  min-height: 80px;
   position: relative;
   z-index: 50;
 }
 
+/* Chatbot Container - Prevent Overlap on Mobile */
 .ai-container {
   position: relative;
   z-index: 1;
@@ -47,15 +55,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 6rem 1rem; /* Adjusts for mobile */
+  padding: 6rem 1rem;
   color: #d1d5db;
   font-family: "OCR-A", "OCR-B", monospace;
 }
 
-/* Mobile-Specific Spacing Fix */
+/* Mobile-Specific Adjustments */
 @media (max-width: 768px) {
   .ai-container {
-    padding-top: 4rem; /* Adjusts header height on smaller screens */
+    padding-top: 4rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
@@ -63,45 +71,63 @@
 
 /* AI Message Styling */
 .ai-message {
-  background-color: #080808; /* Slightly lighter dark */
-  color: #33ff33; /* Green terminal text */
+  background-color: #080808;
+  color: #33ff33;
   font-family: "OCR-A", "OCR-B", monospace;
   padding: 12px;
-  border-radius: 8px; /* Rounded to feel like a terminal */
-  border: 5px solid #333; /* Dark metallic border */
+  border-radius: 8px;
+  border: 5px solid #333;
   box-shadow: 
-    inset 0 0 5px rgba(0, 255, 0, 0.3), /* Inner green glow */
-    0 0 10px rgba(51, 255, 51, 0.5), /* Outer glow */
-    0 0 20px rgba(0, 0, 0, 0.8); /* Deep shadow for depth */
+    inset 0 0 5px rgba(0, 255, 0, 0.3), 
+    0 0 10px rgba(51, 255, 51, 0.5), 
+    0 0 20px rgba(0, 0, 0, 0.8);
   white-space: pre-wrap;
   animation: crt-glow 1.5s infinite alternate;
-
-  max-width: 65%;
-  margin-left: -5%;
+  max-width: 80%; /* Improved responsiveness */
+  margin-left: auto;
   margin-right: auto;
-
-  background-image: url('https://www.transparenttextures.com/patterns/brushed-alum.png'); /* Subtle metallic texture */
+  padding-bottom: 16px; /* Prevents citations from being cut off */
+  position: relative;
+  overflow: visible; /* Allows citations to extend properly */
+  
+  background-image: url('https://www.transparenttextures.com/patterns/brushed-alum.png');
   background-blend-mode: multiply;
+}
+
+/* Mobile Optimization for AI Messages */
+@media (max-width: 768px) {
+  .ai-message {
+    max-width: 95%;
+    font-size: 0.9rem;
+  }
 }
 
 /* User Message Styling */
 .user-message {
   background-color: #080808;
-  color: #33ff33; /* Green terminal text */
+  color: #33ff33;
   font-family: "OCR-A", "OCR-B", monospace;
   padding: 10px;
   border-radius: 8px;
-  border: 5px solid #444; /* Hard metallic frame */
+  border: 5px solid #444;
   box-shadow: 
     inset 0 0 5px rgba(0, 255, 0, 0.2), 
     0 0 10px rgba(51, 255, 51, 0.4), 
     0 0 20px rgba(0, 0, 0, 0.8);
-  max-width: 60%;
+  max-width: 80%;
   align-self: flex-end;
   transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 
-  background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre-v2.png'); /* Adds rugged texture */
+  background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre-v2.png');
   background-blend-mode: multiply;
+}
+
+/* Mobile Optimization for User Messages */
+@media (max-width: 768px) {
+  .user-message {
+    max-width: 95%;
+    font-size: 0.9rem;
+  }
 }
 
 /* Citations */
@@ -114,12 +140,24 @@
   border: 1px solid rgba(51, 255, 51, 0.3);
   box-shadow: none;
   transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  display: inline-block;
+  white-space: nowrap;
+  margin: 4px 0;
+  max-width: 100%;
 }
 
 /* Citation Hover Effect */
 .citation:hover {
   background-color: rgba(51, 255, 51, 0.25);
   transform: scale(1.05);
+}
+
+/* Mobile Optimization for Citations */
+@media (max-width: 768px) {
+  .citation {
+    font-size: 0.7rem;
+    padding: 1px 4px;
+  }
 }
 
 /* CRT Glow Effect */
@@ -135,9 +173,10 @@
   100% { background-position: 0 100px; }
 }
 
-.ai-message {
+/* Apply Scanlines to AI & User Messages */
+.ai-message, .user-message {
   position: relative;
-  overflow: visible; /* Allows citation to extend fully */
+  overflow: hidden;
 }
 
 .ai-message::after, .user-message::after {
@@ -160,4 +199,20 @@
 .ai-message, .user-message, .citation {
   color: #33ff33;
   font-family: "OCR-A", "OCR-B", monospace;
+}
+
+/* Buttons & Input Fields Optimization */
+button, input {
+  font-size: 1rem;
+  padding: 10px;
+  width: auto;
+  max-width: 100%;
+}
+
+/* Mobile Optimization for Buttons & Inputs */
+@media (max-width: 768px) {
+  button, input {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
 }
