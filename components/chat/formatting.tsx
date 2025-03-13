@@ -29,11 +29,11 @@ export function Formatting({ message }: { message: DisplayMessage }) {
       );
     },
 
-    p: ({ children }: { children: React.ReactNode }) => (
-      <p>
-        {renderCitations(children, message.citations)}
-      </p>
-    ),
+p: ({ children }: { children: React.ReactNode }) => (
+  <p>
+    {renderCitations(children, message.citations)}
+  </p>
+)
 
     strong: ({ children }: { children: React.ReactNode }) => (
       <strong>
