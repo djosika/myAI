@@ -135,10 +135,9 @@
   100% { background-position: 0 100px; }
 }
 
-/* Apply Scanlines to AI & User Messages */
-.ai-message, .user-message {
+.ai-message {
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Allows citation to extend fully */
 }
 
 .ai-message::after, .user-message::after {
