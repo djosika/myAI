@@ -3,14 +3,6 @@ import { Citation } from "@/types";
 import React from "react";
 
 /**
- * Processes text to render citations inline without breaking paragraph formatting.
- *
- * @param children The content in which citations are to be rendered.
- * @param citations The list of citations available.
- * @returns The formatted text with inline citations.
- */
-
-/**
  * Preprocesses LaTeX content by replacing delimiters and escaping certain characters.
  *
  * @param content The input string containing LaTeX expressions.
@@ -52,7 +44,13 @@ export function preprocessLaTeX(content: string): string {
   return content;
 }
 
-
+/**
+ * Processes text to render citations inline without breaking paragraph formatting.
+ *
+ * @param children The content in which citations are to be rendered.
+ * @param citations The list of citations available.
+ * @returns The formatted text with inline citations.
+ */
 export function renderCitations(
   children: React.ReactNode | string,
   citations: Citation[]
@@ -96,8 +94,8 @@ export function renderCitations(
     return node;
   };
 
-  export { preprocessLaTeX, renderCitations };
-
-
   return <>{processChildren(children)}</>;
 }
+
+// ✅ Ensure both functions are properly exported
+export { preprocessLaTeX, renderCitations };
