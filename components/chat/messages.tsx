@@ -8,8 +8,10 @@ import { AI_NAME } from "@/configuration/identity";
 
 function AILogo() {
   return (
-    <div className="w-9 h-9">
-      <Image src="/ai-logo.png" alt={AI_NAME} width={48} height={48} />
+    <div className="w-9 h-9 border border-red-500 bg-blue-500">
+      {console.log("Rendering AILogo")}
+      {/* Replaced Next.js <Image> with <img> for debugging */}
+      <img src="/ai-logo.png" alt={AI_NAME} width="48" height="48" />
     </div>
   );
 }
@@ -34,14 +36,17 @@ function UserMessage({ message }: { message: DisplayMessage }) {
 }
 
 function AssistantMessage({ message }: { message: DisplayMessage }) {
+  console.log("Rendering AssistantMessage");
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="flex flex-1 py-1 justify-start gap-[5px]"
+      className="flex flex-1 py-1 justify-start items-center gap-3"
     >
-      <div className="w-9 flex items-end">{<AILogo />}</div>
+      {console.log("Calling AILogo inside AssistantMessage")}
+      <AILogo />
       <motion.div
         whileHover={{ scale: 1.01 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
