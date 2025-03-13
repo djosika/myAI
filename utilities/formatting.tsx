@@ -3,43 +3,6 @@ import { Citation } from "@/types";
 import React from "react";
 
 /**
- * Preprocesses LaTeX content by replacing delimiters and escaping certain characters.
- *
- * @param content The input string containing LaTeX expressions.
- * @returns The processed string with replaced delimiters and escaped characters.
- */
-export function preprocessLaTeX(content: string): string {
-  const codeBlocks: string[] = [];
-  content = content.replace(/(```[\s\S]*?```|`[^`\n]+`)/g, (match, code) => {
-    codeBlocks.push(code);
-    return `<<CODE_BLOCK_${codeBlocks.length - 1}>>`;
-  });
-
-  const latexExpressions: string[] = [];
-  content = content.replace(
-    /(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\\\(.*?\\\))/g,
-    (match) => {
-      latexExpressions.push(match);
-      return `<<LATEX_${latexExpressions.length - 1}>>`;
-    }
-  );
-
-  content = content.replace(/\$(?=\d)/g, "\\$");
-
-  content = content.replace(
-    /<<LATEX_(\d+)>>/g,
-    (_, index) => latexExpressions[parseInt(index)]
-  );
-
-  content = content.replace(
-    /<<CODE_BLOCK_(\d+)>>/g,
-    (_, index) => codeBlocks[parseInt(index)]
-  );
-
-  return content;
-}
-
-/**
  * Processes text to render citations inline without breaking paragraph formatting.
  *
  * @param children The content in which citations are to be rendered.
@@ -50,7 +13,7 @@ export function renderCitations(
   children: React.ReactNode | string,
   citations: Citation[]
 ): React.ReactNode {
-  const matchRegex = /(\[\d+\])/g;
+  const matchRegex = /(\[\d+\])/g; // Matches citations like [1], [2]
 
   const processString = (text: string) => {
     const parts = text.split(matchRegex);
@@ -91,6 +54,3 @@ export function renderCitations(
 
   return <>{processChildren(children)}</>;
 }
-
-// ✅ Ensure we only export once and without duplicates
-export { preprocessLaTeX, renderCitations };
