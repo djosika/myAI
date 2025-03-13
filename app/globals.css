@@ -91,26 +91,6 @@
   background-blend-mode: multiply;
 }
 
-/* ✨ NEW: Centered AI Greeting Styling ✨ */
-.ai-greeting {
-  display: flex;
-  justify-content: center; /* Centers text horizontally */
-  align-items: center; /* Centers text vertically */
-  text-align: center; /* Ensures text stays centered */
-  margin: auto; /* Centers it within the container */
-  max-width: 80%; /* Prevents text from being too wide */
-  padding: 16px;
-}
-
-/* Mobile Optimization for Centered AI Greeting */
-@media (max-width: 768px) {
-  .ai-greeting {
-    max-width: 90%;
-    font-size: 1rem;
-    padding: 12px;
-  }
-}
-
 /* Mobile Optimization for AI Messages */
 @media (max-width: 768px) {
   .ai-message {
@@ -144,6 +124,55 @@
   .user-message {
     max-width: 95%;
     font-size: 0.9rem;
+  }
+}
+
+/* Citation Styling */
+.citation {
+  background-color: rgba(51, 255, 51, 0.15);
+  color: #33ff33;
+  font-size: 0.75rem;
+  padding: 0 3px; /* Minimized padding */
+  border-radius: 5px;
+  border: 1px solid rgba(51, 255, 51, 0.3);
+  display: inline-flex; /* Keeps it inline and aligned properly */
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap; /* Ensures it doesn’t break onto a new line */
+  margin: 0 2px; /* Fine-tuned spacing */
+  line-height: 1; /* Prevents vertical misalignment */
+  vertical-align: middle; /* Keeps it level with surrounding text */
+}
+
+.citation:hover {
+  background-color: rgba(51, 255, 51, 0.25);
+  transform: scale(1.05);
+}
+
+/* Mobile Optimization for Citations */
+@media (max-width: 768px) {
+  .citation {
+    font-size: 0.7rem;
+    padding: 0 2px;
+  }
+}
+
+/* Tooltip Content Styling */
+.tooltip-content {
+  white-space: normal; /* Ensures tooltip content doesn't affect text flow */
+  word-wrap: break-word;
+  max-width: 250px; /* Prevents tooltips from getting too wide */
+  font-size: 0.85rem;
+  padding: 6px;
+}
+
+/* Mobile-Specific Tooltip Fix */
+@media (max-width: 768px) {
+  .tooltip-content {
+    max-width: 90vw; /* Ensures tooltips don’t exceed the screen width */
+    text-align: left;
+    font-size: 0.8rem;
+    padding: 6px;
   }
 }
 
