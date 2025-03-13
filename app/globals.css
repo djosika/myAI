@@ -63,9 +63,11 @@
   }
 }
 
-/* AI Message Styling */
-.ai-message {
-  background-color: #000000 !important; /* Solid black base to eliminate gray */
+/* ✅ Apply Background Fix for ALL Messages */
+.ai-message,
+.user-message,
+.ai-greeting { /* Ensures greeting also has the proper background */
+  background-color: #000000 !important; /* Forces solid black to remove gray */
   color: #33ff33;
   font-family: "OCR-A", "OCR-B", monospace;
   padding: 12px;
@@ -85,54 +87,32 @@
   overflow: visible !important;
   z-index: 10;
 
-  /* ✅ FIX: Ensure the background works consistently */
+  /* ✅ Fix: Proper Background for Consistency */
   background: #000000 url('https://www.transparenttextures.com/patterns/brushed-alum.png');
   background-repeat: repeat;
-  background-size: 200px 200px; /* Makes sure the texture renders properly */
-  background-blend-mode: overlay !important; /* Gives proper layered effect */
+  background-size: 200px 200px; /* Ensures correct rendering */
+  background-blend-mode: overlay !important;
 }
 
 /* 🔧 iOS and Android-Specific Fix */
 @supports (-webkit-touch-callout: none) {
-  .ai-message {
+  .ai-message,
+  .user-message,
+  .ai-greeting {
     background-color: #000000 !important;
     background-blend-mode: overlay !important;
-    background-size: 150px 150px !important; /* Adjust for better scaling on mobile */
+    background-size: 150px 150px !important; /* Adjusted for better mobile scaling */
   }
 }
 
-/* Mobile Optimization for AI Messages */
+/* Mobile Optimization for Messages */
 @media (max-width: 768px) {
-  .ai-message {
+  .ai-message,
+  .user-message,
+  .ai-greeting {
     max-width: 95%;
     font-size: 0.9rem;
-  }
-}
-
-/* User Message Styling */
-.user-message {
-  background-color: #000000 !important; /* Forces solid black for consistency */
-  color: #33ff33;
-  font-family: "OCR-A", "OCR-B", monospace;
-  padding: 10px;
-  border-radius: 8px;
-  border: 5px solid #444;
-  box-shadow: 
-    inset 0 0 5px rgba(0, 255, 0, 0.2), 
-    0 0 10px rgba(51, 255, 51, 0.4), 
-    0 0 20px rgba(0, 0, 0, 0.8);
-  max-width: 80%;
-  align-self: flex-end;
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-  background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre-v2.png');
-  background-blend-mode: normal !important;
-}
-
-/* Mobile Optimization for User Messages */
-@media (max-width: 768px) {
-  .user-message {
-    max-width: 95%;
-    font-size: 0.9rem;
+    padding: 12px;
   }
 }
 
@@ -193,12 +173,12 @@
 }
 
 /* Apply Scanlines to AI & User Messages */
-.ai-message, .user-message {
+.ai-message, .user-message, .ai-greeting {
   position: relative;
   overflow: hidden;
 }
 
-.ai-message::after, .user-message::after {
+.ai-message::after, .user-message::after, .ai-greeting::after {
   content: "";
   position: absolute;
   top: 0;
@@ -215,7 +195,7 @@
 }
 
 /* Ensure Text is Consistently Neon Green */
-.ai-message, .user-message, .citation {
+.ai-message, .user-message, .ai-greeting, .citation {
   color: #33ff33;
   font-family: "OCR-A", "OCR-B", monospace;
 }
