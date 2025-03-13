@@ -130,14 +130,16 @@
   background-color: rgba(51, 255, 51, 0.15);
   color: #33ff33;
   font-size: 0.75rem;
-  padding: 1px 4px;
+  padding: 0 3px; /* Reduce excess padding */
   border-radius: 5px;
   border: 1px solid rgba(51, 255, 51, 0.3);
-  display: inline-block; /* Ensures inline behavior without flex issues */
-  white-space: nowrap; /* Prevents line breaks */
-  margin: 0; /* Removes unnecessary margin */
-  line-height: 1; /* Ensures it aligns with text */
-  vertical-align: baseline; /* Aligns with surrounding text */
+  display: inline-flex; /* Keeps it inline without unnecessary gaps */
+  align-items: center; /* Ensures proper text alignment */
+  justify-content: center;
+  white-space: nowrap; /* Prevents unwanted line breaks */
+  margin: 0 2px; /* Fine-tunes spacing */
+  line-height: 1; /* Ensures it aligns with text properly */
+  vertical-align: middle; /* Keeps it level with text */
 }
 
 /* Citation Hover Effect */
