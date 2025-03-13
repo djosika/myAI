@@ -9,14 +9,12 @@ import React from "react";
  * @returns The processed string with replaced delimiters and escaped characters.
  */
 export function preprocessLaTeX(content: string): string {
-  // Step 1: Protect code blocks
   const codeBlocks: string[] = [];
   content = content.replace(/(```[\s\S]*?```|`[^`\n]+`)/g, (match, code) => {
     codeBlocks.push(code);
     return `<<CODE_BLOCK_${codeBlocks.length - 1}>>`;
   });
 
-  // Step 2: Protect existing LaTeX expressions
   const latexExpressions: string[] = [];
   content = content.replace(
     /(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\\\(.*?\\\))/g,
@@ -26,16 +24,13 @@ export function preprocessLaTeX(content: string): string {
     }
   );
 
-  // Step 3: Escape dollar signs that are likely currency indicators
   content = content.replace(/\$(?=\d)/g, "\\$");
 
-  // Step 4: Restore LaTeX expressions
   content = content.replace(
     /<<LATEX_(\d+)>>/g,
     (_, index) => latexExpressions[parseInt(index)]
   );
 
-  // Step 5: Restore code blocks
   content = content.replace(
     /<<CODE_BLOCK_(\d+)>>/g,
     (_, index) => codeBlocks[parseInt(index)]
@@ -55,7 +50,7 @@ export function renderCitations(
   children: React.ReactNode | string,
   citations: Citation[]
 ): React.ReactNode {
-  const matchRegex = /(\[\d+\])/g; // Matches citations like [1], [2]
+  const matchRegex = /(\[\d+\])/g;
 
   const processString = (text: string) => {
     const parts = text.split(matchRegex);
@@ -97,5 +92,5 @@ export function renderCitations(
   return <>{processChildren(children)}</>;
 }
 
-// ✅ Ensure both functions are properly exported
+// ✅ Ensure we only export once and without duplicates
 export { preprocessLaTeX, renderCitations };
