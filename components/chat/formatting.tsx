@@ -29,22 +29,16 @@ export function Formatting({ message }: { message: DisplayMessage }) {
       );
     },
 
-p: ({ children }: { children: React.ReactNode }) => (
-  <p>
-    {renderCitations(children, message.citations)}
-  </p>
-),  // ✅ Add this comma
+    p: ({ children }: { children: React.ReactNode }) => (
+      <p>{renderCitations(children, message.citations)}</p>
+    ),  // ✅ Ensure this comma is present
 
-strong: ({ children }: { children: React.ReactNode }) => (
-  <strong>
-    {renderCitations(children, message.citations)}
-  </strong>
-),
+    strong: ({ children }: { children: React.ReactNode }) => (
+      <strong>{renderCitations(children, message.citations)}</strong>
+    ),  // ✅ Ensure this comma is present
 
     li: ({ children }: { children: React.ReactNode }) => (
-      <li>
-        {renderCitations(children, message.citations)}
-      </li>
+      <li>{renderCitations(children, message.citations)}</li>
     ),
   };
 
