@@ -126,20 +126,18 @@
   }
 }
 
-/* Citations */
 .citation {
   background-color: rgba(51, 255, 51, 0.15);
   color: #33ff33;
   font-size: 0.75rem;
-  padding: 3px 6px;
+  padding: 1px 4px;
   border-radius: 5px;
   border: 1px solid rgba(51, 255, 51, 0.3);
-  box-shadow: none;
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-  display: inline-block;
-  white-space: nowrap;
-  margin: 4px 0;
-  max-width: 100%;
+  display: inline-flex; /* Ensures it stays inline without forcing new lines */
+  align-items: center;
+  white-space: nowrap; /* Prevents breaking onto a new line */
+  margin: 0 2px; /* Reduces excess margin */
+  line-height: 1; /* Keeps it compact */
 }
 
 /* Citation Hover Effect */
