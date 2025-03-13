@@ -8,10 +8,10 @@ import { AI_NAME } from "@/configuration/identity";
 
 function AILogo() {
   return (
-    <div className="w-9 h-9 border border-red-500 bg-blue-500">
+    <div className="w-9 h-9 border border-red-500 bg-blue-500 flex items-center justify-center">
       {console.log("Rendering AILogo")}
-      {/* Replaced Next.js <Image> with <img> for debugging */}
-      <img src="/ai-logo.png" alt={AI_NAME} width="48" height="48" />
+      {/* Replacing Next.js <Image> with <img> to test */}
+      <img src="/ai-logo.png" alt={AI_NAME} width="48" height="48" onError={(e) => console.error("Image failed to load", e)} />
     </div>
   );
 }
