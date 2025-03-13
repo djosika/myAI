@@ -53,15 +53,15 @@
   font-family: "OCR-A", "OCR-B", monospace;
 }
 
-/* Mobile-Specific Fix: Push Messages Below Header */
+/* Mobile-Specific Fix: Move Up Initial AI Message */
 @media (max-width: 768px) {
-  .ai-container {
-    padding-top: 4rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+  .ai-message:first-of-type {
+    margin-top: -20px; /* Adjust this value to move it up slightly */
+  }
+}
 
     /* Moves content down so it's not hidden under the header */
-    margin-top: 125px;
+    margin-top: 150px;
   }
 }
 
