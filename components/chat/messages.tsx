@@ -55,23 +55,7 @@ function AssistantMessage({ message }: { message: DisplayMessage }) {
 
 function EmptyMessages() {
   return (
-    <div 
-      className="absolute top-17 left-1/2 -translate-x-1/2 px-6 py-3 bg-[#080808] border-4 border-[#333] text-[#33ff33] font-['OCR-A',_monospace] text-lg rounded-lg shadow-lg whitespace-nowrap overflow-hidden"
-      style={{
-        boxShadow: "inset 0 0 5px rgba(0, 255, 0, 0.3), 0 0 10px rgba(51, 255, 51, 0.5), 0 0 20px rgba(0, 0, 0, 0.8)",
-        backgroundImage: "url('https://www.transparenttextures.com/patterns/brushed-alum.png')",
-        backgroundBlendMode: "multiply",
-        position: "relative"
-      }}
-    >
-      <div 
-        className="absolute top-0 left-0 w-full h-full"
-        style={{
-          background: "repeating-linear-gradient(transparent, rgba(0, 255, 0, 0.03) 2px, transparent 4px)",
-          animation: "scanlines 5s linear infinite",
-          pointerEvents: "none"
-        }}
-      ></div>
+    <div className="absolute top-17 left-1/2 -translate-x-1/2 px-6 py-3 ai-greeting">
       <div className="scrolling-text">
         Submit your sacred inquiries below.
       </div>
