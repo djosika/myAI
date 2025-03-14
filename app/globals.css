@@ -11,13 +11,12 @@
   }
 }
 
-/* ✅ Fix Background Issues */
+/* ✅ Universal Background Fix (Prevents iOS Zooming) */
 html, body {
   overflow-x: hidden;
   -webkit-overflow-scrolling: auto !important;
 }
 
-/* ✅ Universal Background Fix (Prevents iOS Zooming) */
 body::before {
   content: "";
   position: fixed; /* ✅ Fix for iOS background zooming */
@@ -26,7 +25,7 @@ body::before {
   width: 100vw;
   height: 100vh;
   background: url('/warhammer-bg.jpg') center/cover no-repeat fixed;
-  z-index: -1; /* ✅ Ensures it doesn’t interfere with content */
+  z-index: -1;
 }
 
 /* ✅ Ensure Header is Always Visible */
@@ -38,7 +37,7 @@ body::before {
   height: 80px;
   z-index: 50;
   background: rgba(0, 0, 0, 0.9); /* ✅ Ensures it's not transparent */
-  backdrop-filter: blur(5px); /* ✅ Adds slight transparency effect */
+  backdrop-filter: blur(5px);
 }
 
 /* ✅ Fix: Ensure messages don’t scroll under the header */
@@ -53,13 +52,13 @@ body::before {
   padding: 6rem 1rem;
   color: #d1d5db;
   font-family: "OCR-A", "OCR-B", monospace;
-  overflow-y: auto; /* ✅ Allows messages to scroll properly */
-  padding-top: 100px !important; /* ✅ Prevents messages from going under the header */
+  overflow-y: auto;
+  padding-top: 100px !important;
 }
 
-/* ✅ AI Message Styling - Restore CRT Look */
-.ai-message {
-  background-color: #000000 !important; /* Solid black to fix transparency */
+/* ✅ Restore AI Message Styling */
+.ai-message, .empty-message {
+  background-color: #000000 !important;
   color: #33ff33;
   font-family: "OCR-A", "OCR-B", monospace;
   padding: 12px;
@@ -82,8 +81,22 @@ body::before {
   /* ✅ Fix: Proper Background for CRT */
   background: #000000 url('https://www.transparenttextures.com/patterns/brushed-alum.png');
   background-repeat: repeat;
-  background-size: 200px 200px; /* Ensures correct rendering */
+  background-size: 200px 200px;
   background-blend-mode: overlay !important;
+}
+
+/* ✅ Fix for "Submit Your Sacred Inquiries Below" */
+.empty-message {
+  position: absolute;
+  top: 120px; /* ✅ Prevents it from going under the header */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  text-shadow: 0 0 5px rgba(51, 255, 51, 0.5), 0 0 10px rgba(51, 255, 51, 0.3);
 }
 
 /* ✅ Restore User Message Alignment */
@@ -99,8 +112,8 @@ body::before {
     0 0 10px rgba(51, 255, 51, 0.4), 
     0 0 20px rgba(0, 0, 0, 0.8);
   max-width: 80%;
-  text-align: right; /* ✅ Ensures text aligns right */
-  align-self: flex-end; /* ✅ Moves messages to the right */
+  text-align: right;
+  align-self: flex-end;
   justify-content: flex-end;
   display: flex;
   flex-direction: column;
@@ -112,7 +125,7 @@ body::before {
   color: #33ff33;
   font-size: 0.75rem;
   padding: 5px;
-  border-radius: 50%; /* ✅ Makes it a circle */
+  border-radius: 50%;
   border: 2px solid rgba(51, 255, 51, 0.6);
   display: inline-flex;
   align-items: center;
@@ -121,21 +134,15 @@ body::before {
   margin: 0 4px;
   line-height: 1;
   vertical-align: middle;
-  width: 20px; /* ✅ Ensures consistent circle size */
+  width: 20px;
   height: 20px;
   text-align: center;
   font-weight: bold;
 }
 
 /* ✅ Fix Text Transparency Issue */
-.citation, .ai-message, .user-message {
+.citation, .ai-message, .user-message, .empty-message {
   text-shadow: 0 0 5px rgba(51, 255, 51, 0.5), 0 0 10px rgba(51, 255, 51, 0.3);
-}
-
-/* ✅ Make Sure Citations Hover Correctly */
-.citation:hover {
-  background-color: rgba(51, 255, 51, 0.25);
-  transform: scale(1.05);
 }
 
 /* ✅ Mobile Optimization */
@@ -150,15 +157,20 @@ body::before {
     width: 18px;
     height: 18px;
   }
+
+  .empty-message {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
 }
 
 /* ✅ Ensure Text & Messages Match */
-.ai-message, .user-message, .ai-greeting {
+.ai-message, .user-message, .empty-message {
   position: relative;
   overflow: hidden;
 }
 
-.ai-message::after, .user-message::after, .ai-greeting::after {
+.ai-message::after, .user-message::after, .empty-message::after {
   content: "";
   position: absolute;
   top: 0;
