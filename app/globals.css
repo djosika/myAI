@@ -11,7 +11,7 @@
   }
 }
 
-/* ✅ Fix Background Issues (Prevents iOS Zooming) */
+/* ✅ Fix Background Across All Devices */
 html, body {
   background: black;
   background-image: var(--background-image) !important;
@@ -57,7 +57,7 @@ html, body {
   backdrop-filter: blur(5px);
 }
 
-/* ✅ Moves Messages Below the Header */
+/* ✅ Fix AI Container to Start Below Header */
 .ai-container {
   position: relative;
   z-index: 1;
@@ -156,7 +156,7 @@ html, body {
 /* ✅ Fix Empty Message Box (Submit Your Inquiries Below) */
 .empty-message {
   position: absolute;
-  top: 120px;
+  top: 100px; /* ✅ Moves below header */
   left: 50%;
   transform: translateX(-50%);
   padding: 12px 20px;
@@ -190,6 +190,7 @@ html, body {
   .empty-message {
     font-size: 1rem;
     padding: 8px 16px;
+    top: 120px; /* Adjust for mobile header */
   }
 }
 
