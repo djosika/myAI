@@ -227,6 +227,6 @@ html, body {
   .ai-avatar {
     width: 40px; /* ✅ Adjust the avatar size if needed */
     height: 40px;
-    margin-right: -5px !important; /* ✅ Moves the avatar closer */
+    margin-right: -10px !important; /* ✅ Moves the avatar closer */
   }
 }
