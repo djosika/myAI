@@ -13,13 +13,20 @@
 
 /* ✅ Fix Background Issues */
 html, body {
-  background: var(--background-image) !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
   overflow-x: hidden;
   -webkit-overflow-scrolling: auto !important;
+}
+
+/* ✅ Universal Background Fix (Prevents iOS Zooming) */
+body::before {
+  content: "";
+  position: fixed; /* ✅ Fix for iOS background zooming */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('/warhammer-bg.jpg') center/cover no-repeat fixed;
+  z-index: -1; /* ✅ Ensures it doesn’t interfere with content */
 }
 
 /* ✅ Ensure Header is Always Visible */
