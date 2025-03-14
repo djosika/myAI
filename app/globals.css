@@ -7,59 +7,46 @@
 /* Root Variables */
 @layer base {
   :root {
-    --background-image: url('/warhammer-bg.jpg'); /* Ensure the correct path */
+    --background-image: url('/warhammer-bg.jpg'); /* Ensure this image is accessible */
   }
 }
 
-/* ✅ Universal Background Fix (Prevents iOS Zooming) */
+/* ✅ Fix Background Issues */
 html, body {
+  background: var(--background-image) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
   overflow-x: hidden;
   -webkit-overflow-scrolling: auto !important;
-  background: black; /* Prevents weird background artifacts */
 }
 
-body::before {
-  content: "";
-  position: fixed; /* ✅ Fix for iOS background zooming */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: url('/warhammer-bg.jpg') center/cover no-repeat fixed;
-  z-index: -1;
+/* ✅ Special Fix for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  html, body {
+    background-attachment: scroll !important;
+    position: fixed !important;
+    width: 100%;
+    height: 100%;
+    overflow: hidden !important;
+  }
+
+  /* Ensures Chatbot Messages Scroll Properly */
+  .ai-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
 }
 
-/* ✅ Ensure Header is Always Visible */
-.header {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  z-index: 50;
-  background: rgba(0, 0, 0, 0.9); /* ✅ Ensures it's not transparent */
-  backdrop-filter: blur(5px);
-}
-
-/* ✅ Fix: Ensure messages don’t scroll under the header */
-.ai-container {
-  position: relative;
-  z-index: 1;
-  min-height: calc(100vh - 80px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 6rem 1rem;
-  color: #d1d5db;
-  font-family: "OCR-A", "OCR-B", monospace;
-  overflow-y: auto;
-  padding-top: 100px !important;
-}
-
-/* ✅ AI Message Styling */
-.ai-message, .empty-message {
-  background-color: #000000 !important;
+/* ✅ AI Message Styling - Restore CRT Look */
+.ai-message {
+  background-color: #000000 !important; /* Solid black to fix transparency */
   color: #33ff33;
   font-family: "OCR-A", "OCR-B", monospace;
   padding: 12px;
@@ -82,29 +69,8 @@ body::before {
   /* ✅ Fix: Proper Background for CRT */
   background: #000000 url('https://www.transparenttextures.com/patterns/brushed-alum.png');
   background-repeat: repeat;
-  background-size: 200px 200px;
+  background-size: 200px 200px; /* Ensures correct rendering */
   background-blend-mode: overlay !important;
-}
-
-/* ✅ Restore Empty Message ("Submit Your Sacred Inquiries Below") */
-.empty-message {
-  position: absolute;
-  top: 120px; /* ✅ Prevents it from going under the header */
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 12px 20px;
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-radius: 10px;
-  text-shadow: 0 0 5px rgba(51, 255, 51, 0.5), 0 0 10px rgba(51, 255, 51, 0.3);
-  border: 4px solid #33ff33;
-  background-color: black;
-  display: inline-block;
-  box-shadow: 
-    inset 0 0 5px rgba(0, 255, 0, 0.3), 
-    0 0 10px rgba(51, 255, 51, 0.5), 
-    0 0 20px rgba(0, 0, 0, 0.8);
 }
 
 /* ✅ Restore User Message Alignment */
@@ -120,8 +86,8 @@ body::before {
     0 0 10px rgba(51, 255, 51, 0.4), 
     0 0 20px rgba(0, 0, 0, 0.8);
   max-width: 80%;
-  text-align: right;
-  align-self: flex-end;
+  text-align: right; /* ✅ Ensures text aligns right */
+  align-self: flex-end; /* ✅ Moves messages to the right */
   justify-content: flex-end;
   display: flex;
   flex-direction: column;
@@ -133,7 +99,7 @@ body::before {
   color: #33ff33;
   font-size: 0.75rem;
   padding: 5px;
-  border-radius: 50%;
+  border-radius: 50%; /* ✅ Makes it a circle */
   border: 2px solid rgba(51, 255, 51, 0.6);
   display: inline-flex;
   align-items: center;
@@ -142,15 +108,21 @@ body::before {
   margin: 0 4px;
   line-height: 1;
   vertical-align: middle;
-  width: 20px;
+  width: 20px; /* ✅ Ensures consistent circle size */
   height: 20px;
   text-align: center;
   font-weight: bold;
 }
 
 /* ✅ Fix Text Transparency Issue */
-.citation, .ai-message, .user-message, .empty-message {
+.citation, .ai-message, .user-message {
   text-shadow: 0 0 5px rgba(51, 255, 51, 0.5), 0 0 10px rgba(51, 255, 51, 0.3);
+}
+
+/* ✅ Make Sure Citations Hover Correctly */
+.citation:hover {
+  background-color: rgba(51, 255, 51, 0.25);
+  transform: scale(1.05);
 }
 
 /* ✅ Mobile Optimization */
@@ -165,20 +137,15 @@ body::before {
     width: 18px;
     height: 18px;
   }
-
-  .empty-message {
-    font-size: 1rem;
-    padding: 8px 16px;
-  }
 }
 
 /* ✅ Ensure Text & Messages Match */
-.ai-message, .user-message, .empty-message {
+.ai-message, .user-message, .ai-greeting {
   position: relative;
   overflow: hidden;
 }
 
-.ai-message::after, .user-message::after, .empty-message::after {
+.ai-message::after, .user-message::after, .ai-greeting::after {
   content: "";
   position: absolute;
   top: 0;
