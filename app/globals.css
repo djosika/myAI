@@ -22,26 +22,32 @@ html, body {
   -webkit-overflow-scrolling: auto !important;
 }
 
-/* ✅ Special Fix for iOS Safari */
-@supports (-webkit-touch-callout: none) {
-  html, body {
-    background-attachment: scroll !important;
-    position: fixed !important;
-    width: 100%;
-    height: 100%;
-    overflow: hidden !important;
-  }
+/* ✅ Ensure Header is Always Visible */
+.header {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.9); /* ✅ Ensures it's not transparent */
+  backdrop-filter: blur(5px); /* ✅ Adds slight transparency effect */
+}
 
-  /* Ensures Chatbot Messages Scroll Properly */
-  .ai-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    overflow-y: scroll !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
+/* ✅ Fix: Ensure messages don’t scroll under the header */
+.ai-container {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 6rem 1rem;
+  color: #d1d5db;
+  font-family: "OCR-A", "OCR-B", monospace;
+  overflow-y: auto; /* ✅ Allows messages to scroll properly */
+  padding-top: 100px !important; /* ✅ Prevents messages from going under the header */
 }
 
 /* ✅ AI Message Styling - Restore CRT Look */
