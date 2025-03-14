@@ -55,7 +55,7 @@ function AssistantMessage({ message }: { message: DisplayMessage }) {
 
 function EmptyMessages() {
   return (
-    <div className="absolute top-17 left-1/2 -translate-x-1/2 px-6 py-3 ai-greeting">
+    <div className="empty-message">
       <div className="scrolling-text">
         Submit your sacred inquiries below.
       </div>
