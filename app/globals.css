@@ -215,3 +215,18 @@ html, body {
   animation: scanlines 5s linear infinite;
   pointer-events: none;
 }
+
+/* ✅ Web-Specific Avatar Spacing Fix */
+@media (min-width: 769px) { 
+  .ai-message-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 5px; /* ✅ Reduces spacing between the AI avatar and message */
+  }
+
+  .ai-avatar {
+    width: 40px; /* ✅ Adjust the avatar size if needed */
+    height: 40px;
+    margin-right: -5px !important; /* ✅ Moves the avatar closer */
+  }
+}
