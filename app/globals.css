@@ -116,63 +116,7 @@
   }
 }
 
-/* Citation Styling */
-.citation {
-  background-color: rgba(51, 255, 51, 0.15);
-  color: #33ff33;
-  font-size: 0.75rem;
-  padding: 0 3px;
-  border-radius: 5px;
-  border: 1px solid rgba(51, 255, 51, 0.3);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  margin: 0 2px;
-  line-height: 1;
-  vertical-align: middle;
-}
-
-.citation:hover {
-  background-color: rgba(51, 255, 51, 0.25);
-  transform: scale(1.05);
-}
-
-/* Mobile Optimization for Citations */
-@media (max-width: 768px) {
-  .citation {
-    font-size: 0.7rem;
-    padding: 0 2px;
-  }
-}
-
-/* Tooltip Content Styling */
-.tooltip-content {
-  white-space: normal;
-  word-wrap: break-word;
-  max-width: 250px;
-  font-size: 0.85rem;
-  padding: 6px;
-}
-
-/* Mobile-Specific Tooltip Fix */
-@media (max-width: 768px) {
-  .tooltip-content {
-    max-width: 90vw;
-    text-align: left;
-    font-size: 0.8rem;
-    padding: 6px;
-  }
-}
-
-/* CRT Glow Effect */
-@keyframes crt-glow {
-  0% { text-shadow: 0 0 5px #33ff33; }
-  50% { text-shadow: 0 0 10px #33ff33; }
-  100% { text-shadow: 0 0 5px #33ff33; }
-}
-
-/* Apply Scanlines to AI & User Messages */
+/* Apply Scanlines Effect */
 .ai-message, .user-message, .ai-greeting {
   position: relative;
   overflow: hidden;
@@ -192,26 +136,4 @@
   );
   animation: scanlines 5s linear infinite;
   pointer-events: none;
-}
-
-/* Ensure Text is Consistently Neon Green */
-.ai-message, .user-message, .ai-greeting, .citation {
-  color: #33ff33;
-  font-family: "OCR-A", "OCR-B", monospace;
-}
-
-/* Buttons & Input Fields Optimization */
-button, input {
-  font-size: 1rem;
-  padding: 10px;
-  width: auto;
-  max-width: 100%;
-}
-
-/* Mobile Optimization for Buttons & Inputs */
-@media (max-width: 768px) {
-  button, input {
-    font-size: 0.9rem;
-    padding: 8px;
-  }
 }
