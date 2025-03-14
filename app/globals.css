@@ -11,25 +11,25 @@
   }
 }
 
-/* ✅ Set Background as Fixed */
+/* ✅ Fix Background Issues */
 html, body {
   background: var(--background-image) !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
-  background-attachment: fixed !important; /* Keeps background fixed */
-  overflow-x: hidden; /* Prevents horizontal scrolling */
-  -webkit-overflow-scrolling: auto !important; /* Prevents iOS zoom-in effect */
+  background-attachment: fixed !important;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: auto !important;
 }
 
 /* ✅ Special Fix for iOS Safari */
 @supports (-webkit-touch-callout: none) {
   html, body {
-    background-attachment: scroll !important; /* Forces true static background */
-    position: fixed !important; /* Locks scrolling position */
+    background-attachment: scroll !important;
+    position: fixed !important;
     width: 100%;
     height: 100%;
-    overflow: hidden !important; /* Stops background shifting */
+    overflow: hidden !important;
   }
 
   /* Ensures Chatbot Messages Scroll Properly */
@@ -44,91 +44,68 @@ html, body {
   }
 }
 
-/* Ensure Header is Always Visible */
-.header {
-  min-height: 80px;
-  position: relative;
-  z-index: 50;
-}
-
-/* Chatbot Container - Prevents Overlap with Header */
-.ai-container {
-  position: relative;
-  z-index: 1;
-  min-height: calc(100vh - 80px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 6rem 1rem;
-  color: #d1d5db;
-  font-family: "OCR-A", "OCR-B", monospace;
-}
-
-/* Mobile-Specific Fix: Push Messages Below Header */
-@media (max-width: 768px) {
-  .ai-container {
-    padding-top: 4rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    margin-top: 150px;
-  }
-}
-
-/* ✅ Apply Background Fix for ALL Messages */
-.ai-message,
-.user-message,
-.ai-greeting { /* Ensures greeting also has the proper background */
-  background-color: #000000 !important; /* Forces solid black to remove gray */
+/* ✅ Restore User Message Alignment */
+.user-message {
+  background-color: #000000 !important;
   color: #33ff33;
   font-family: "OCR-A", "OCR-B", monospace;
-  padding: 12px;
+  padding: 10px;
   border-radius: 8px;
-  border: 5px solid #333;
+  border: 5px solid #444;
   box-shadow: 
-    inset 0 0 5px rgba(0, 255, 0, 0.3), 
-    0 0 10px rgba(51, 255, 51, 0.5), 
+    inset 0 0 5px rgba(0, 255, 0, 0.2), 
+    0 0 10px rgba(51, 255, 51, 0.4), 
     0 0 20px rgba(0, 0, 0, 0.8);
-  white-space: pre-wrap;
-  animation: crt-glow 1.5s infinite alternate;
   max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 16px;
-  position: relative;
-  overflow: visible !important;
-  z-index: 10;
-
-  /* ✅ Fix: Proper Background for Consistency */
-  background: #000000 url('https://www.transparenttextures.com/patterns/brushed-alum.png');
-  background-repeat: repeat;
-  background-size: 200px 200px; /* Ensures correct rendering */
-  background-blend-mode: overlay !important;
+  text-align: right; /* ✅ Ensures text aligns right */
+  align-self: flex-end; /* ✅ Moves messages to the right */
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
 }
 
-/* 🔧 iOS and Android-Specific Fix */
-@supports (-webkit-touch-callout: none) {
-  .ai-message,
-  .user-message,
-  .ai-greeting {
-    background-color: #000000 !important;
-    background-blend-mode: overlay !important;
-    background-size: 150px 150px !important; /* Adjusted for better mobile scaling */
-  }
+/* ✅ Restore Citation Circles */
+.citation {
+  background-color: rgba(51, 255, 51, 0.15);
+  color: #33ff33;
+  font-size: 0.75rem;
+  padding: 5px;
+  border-radius: 50%; /* ✅ Makes it a circle */
+  border: 2px solid rgba(51, 255, 51, 0.6);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  margin: 0 4px;
+  line-height: 1;
+  vertical-align: middle;
+  width: 20px; /* ✅ Ensures consistent circle size */
+  height: 20px;
+  text-align: center;
+  font-weight: bold;
 }
 
-/* Mobile Optimization for Messages */
+/* ✅ Make Sure Citations Hover Correctly */
+.citation:hover {
+  background-color: rgba(51, 255, 51, 0.25);
+  transform: scale(1.05);
+}
+
+/* ✅ Mobile Optimization */
 @media (max-width: 768px) {
-  .ai-message,
-  .user-message,
-  .ai-greeting {
+  .user-message {
     max-width: 95%;
     font-size: 0.9rem;
-    padding: 12px;
+  }
+
+  .citation {
+    font-size: 0.7rem;
+    width: 18px;
+    height: 18px;
   }
 }
 
-/* Apply Scanlines Effect */
+/* ✅ Ensure Text & Messages Match */
 .ai-message, .user-message, .ai-greeting {
   position: relative;
   overflow: hidden;
