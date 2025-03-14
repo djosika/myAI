@@ -7,7 +7,7 @@
 /* Root Variables */
 @layer base {
   :root {
-    --background-image: url('/warhammer-bg.jpg'); /* Replace with an actual image */
+    --background-image: url('/warhammer-bg.jpg'); /* Ensure this image is accessible */
   }
 }
 
@@ -42,6 +42,35 @@ html, body {
     overflow-y: scroll !important;
     -webkit-overflow-scrolling: touch !important;
   }
+}
+
+/* ✅ AI Message Styling - Restore CRT Look */
+.ai-message {
+  background-color: #000000 !important; /* Solid black to fix transparency */
+  color: #33ff33;
+  font-family: "OCR-A", "OCR-B", monospace;
+  padding: 12px;
+  border-radius: 8px;
+  border: 5px solid #333;
+  box-shadow: 
+    inset 0 0 5px rgba(0, 255, 0, 0.3), 
+    0 0 10px rgba(51, 255, 51, 0.5), 
+    0 0 20px rgba(0, 0, 0, 0.8);
+  white-space: pre-wrap;
+  animation: crt-glow 1.5s infinite alternate;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 16px;
+  position: relative;
+  overflow: visible !important;
+  z-index: 10;
+
+  /* ✅ Fix: Proper Background for CRT */
+  background: #000000 url('https://www.transparenttextures.com/patterns/brushed-alum.png');
+  background-repeat: repeat;
+  background-size: 200px 200px; /* Ensures correct rendering */
+  background-blend-mode: overlay !important;
 }
 
 /* ✅ Restore User Message Alignment */
@@ -83,6 +112,11 @@ html, body {
   height: 20px;
   text-align: center;
   font-weight: bold;
+}
+
+/* ✅ Fix Text Transparency Issue */
+.citation, .ai-message, .user-message {
+  text-shadow: 0 0 5px rgba(51, 255, 51, 0.5), 0 0 10px rgba(51, 255, 51, 0.3);
 }
 
 /* ✅ Make Sure Citations Hover Correctly */
